@@ -62,7 +62,7 @@ const Home = () => {
             <NavBar />
             <Hero mainText="Tim Jefferson" loopTexts={["Web Developer.", "React Enthusiast.", "Software Engineer.", "Hobby Guitarist.", "Phish Lover.", "Dog Dad."]} />
 
-            <div className="flex justify-center my-12">
+            <div className="flex justify-center mt-12 mb-36">
                 <div className="stats stats-vertical bg-base-300 mx-4 w-full sm:w-[40rem] rounded-md drop-shadow">
                     <div className="badge badge-lg py-4 w-full justify-start md:w-1/2">Professional Experience / Education</div>
                     {

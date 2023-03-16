@@ -23,6 +23,11 @@ body {
     border-top-width: 6vw;   
 } 
 
+/* work around for the side drawer mobile scrolling issue */
+.drawer {
+    @apply h-full;
+}
+
 .collapse-plus .collapse-title::after {
     @apply top-0;
     @apply right-0;
