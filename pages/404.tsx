@@ -1,11 +1,15 @@
 import Link from "next/link";
 import Hero from "../components/Hero"
+import PageTitle from "../components/PageTitle";
 
 const NotFound = () => {
     return (
-        <Hero mainText="Not Found" loopTexts={["Sorry.", "My Apologies.", ":(", "So Embarassing..."]}>
-            <Link href="/" className="btn mt-10 uppercase">go home</Link>
-        </Hero>
+        <>
+            <PageTitle title="Not Found" />
+            <Hero mainText="Not Found" loopTexts={["Sorry.", "My Apologies.", ":(", "So Embarassing..."]}>
+                <Link href="/" className="btn mt-10 uppercase">go home</Link>
+            </Hero>
+        </>
     )
 }
 
