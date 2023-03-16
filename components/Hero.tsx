@@ -11,7 +11,7 @@ const Hero = ({ mainText, loopTexts, children }: HeroProps) => {
 
     return (
         <>
-            <div className="hero min-h-hero bg-base-200">
+            <div className="hero min-h-hero bg-base-300">
                 <div className="hero-content text-center">
                     <div className="max-w-md">
                         <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold">{ mainText }</h1>
@@ -20,7 +20,7 @@ const Hero = ({ mainText, loopTexts, children }: HeroProps) => {
                     </div>
                 </div>
             </div>
-            <div className="triangle border-t-base-200" />
+            <div className="triangle border-t-base-300" />
         </>
     )
 }
