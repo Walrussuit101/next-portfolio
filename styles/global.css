@@ -21,4 +21,13 @@ body {
     border-left: calc(100vw / 2) solid transparent;
     border-right: calc(100vw / 2 - 15px) solid transparent; 
     border-top-width: 6vw;   
+} 
+
+.collapse-plus .collapse-title::after {
+    @apply top-0;
+    @apply right-0;
+}
+
+.collapse:focus {
+    @apply outline-none
 }
