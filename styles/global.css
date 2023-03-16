@@ -4,6 +4,7 @@
 
 body {
     height: 100vh;
+    background-color: hsl(var(--b2)); /* base-200 */
 }
 
 #__next {
