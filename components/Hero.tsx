@@ -8,8 +8,8 @@ const Hero = () => {
             <div className="hero min-h-hero bg-base-200">
                 <div className="hero-content text-center">
                     <div className="max-w-md">
-                        <h1 className="text-5xl font-bold">Tim Jefferson</h1>
-                        <p className="py-6 text-xl h-[22px]">{ text }</p>
+                        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold">Tim Jefferson</h1>
+                        <p className="py-6 text-xl lg:text-2xl h-[22px]">{ text }</p>
                     </div>
                 </div>
             </div>
