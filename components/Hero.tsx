@@ -1,7 +1,7 @@
 import useTypewriter from "./hooks/useTypewriter";
 
 const Hero = () => {
-    const text = useTypewriter(["Web Developer.", "React Enthusiast.", "Hobby Guitarist.", "Phish Lover."]);
+    const text = useTypewriter(["Web Developer.", "React Enthusiast.", "Software Engineer.", "Hobby Guitarist.", "Phish Lover.", "Dog Dad."]);
 
     return (
         <>
