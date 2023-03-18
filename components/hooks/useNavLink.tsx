@@ -5,7 +5,6 @@ import { useEffect, useState, ReactNode } from "react";
 
 const routes = [
     { text: 'home', path: '/' },
-    { text: 'about', path: '/about' },
     { text: 'contact', path: '/contact' }
 ]
 

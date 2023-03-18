@@ -15,19 +15,23 @@ const Contact = () => {
             <NavBar />
             <Hero mainText="Reach Out" loopTexts={['Have a Question?', "Say Hello!", "See What's New."]} />
             <div className="flex justify-center w-full my-24">
-                <form className="text px-4 w-full md:w-[40rem]">
+                <form 
+                    action="https://formspree.io/f/mbjeknqj"
+                    method="POST"
+                    className="text px-4 w-full md:w-[40rem]"
+                >
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Email Address</span>
                         </label>
-                        <input type="email" placeholder="" className="input input-bordered" required value={email} onChange={e => setEmail(e.target.value)}/>
+                        <input name="email" type="email" placeholder="" className="input input-bordered" required/>
                     </div>
 
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Message</span>
                         </label>
-                        <textarea className="textarea textarea-bordered h-60" placeholder="" required value={message} onChange={e => setMessage(e.target.value)}></textarea>
+                        <textarea name="message" className="textarea textarea-bordered h-60" placeholder="" required></textarea>
                     </div>
 
                     <button className="btn w-full uppercase mt-8">submit</button>
