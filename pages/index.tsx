@@ -43,7 +43,7 @@ const ExpEdu = [
         value: 'BS Computer Science',
         desc: "Fall 17' - Spring 21'",
         children: <>
-            <span className="text-lg block">Senior Software Project I & II | Fall 2020 & Spring 2021</span>
+            <span className="text-lg block">Senior Software Project I & II</span>
             {/* parent collapse loses focus on <a> click, so preventDefautl on focus and manually open new tab*/}
             <a onClick={e => { e.preventDefault(); window.open("https://github.com/YCP-Swarm-Robotics-Capstone-2020-2021", '_blank')}} className="link text-sm">Repositories</a>
             <ul className="list-disc mt-1 pl-6">
