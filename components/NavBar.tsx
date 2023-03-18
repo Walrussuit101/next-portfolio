@@ -17,7 +17,7 @@ const NavBar = () => {
                 <div className="dropdown dropdown-end">
                     <label tabIndex={0} className="avatar btn btn-circle w-14 h-14">
                         <div className="w-12 h-12 rounded-full">
-                            <img src="/headshot.jpg" />
+                            <img src="/headshot.jpg" alt="Tim Jefferson Headshot"/>
                         </div>
                     </label>
                     <ul tabIndex={0} className="menu dropdown-content bg-base-200 rounded-md mt-1 w-44">
