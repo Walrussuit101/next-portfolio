@@ -1,4 +1,7 @@
+import Image from "next/image";
 import useNavLinks from "./hooks/useNavLink";
+import headshot from '../public/headshot.jpg';
+import link from '../public/link.svg';
 
 const NavBar = () => {
     const navLinks = useNavLinks();
@@ -17,20 +20,20 @@ const NavBar = () => {
                 <div className="dropdown dropdown-end">
                     <label tabIndex={0} className="avatar btn btn-circle w-14 h-14">
                         <div className="w-12 h-12 rounded-full">
-                            <img src="/headshot.jpg" alt="Tim Jefferson Headshot"/>
+                            <Image src={headshot} alt="Tim Jefferson Headshot"/>
                         </div>
                     </label>
                     <ul tabIndex={0} className="menu dropdown-content bg-base-200 rounded-md mt-1 w-44">
                         <li>
                             <a className="hover:underline" href="https://github.com/Walrussuit101" target="_blank" rel="noopener noreferrer">
                                 GitHub
-                                <img src="link.svg" className="invert ml-16" height="20" width="20" />
+                                <Image src={link} className="invert ml-16" height="20" width="20" alt={'My GitHub'} />
                             </a>
                         </li>
                         <li>
                             <a className="hover:underline" href="https://www.linkedin.com/in/timothy-jefferson-51a49b181/" target="_blank" rel="noopener noreferrer">
                                 LinkedIn
-                                <img src="link.svg" className="invert ml-[3.15rem]" height="20" width="20" />
+                                <Image src={link} className="invert ml-[3.15rem]" height="20" width="20" alt={'My LinkedIn'} />
                             </a>
                         </li>
                     </ul>
