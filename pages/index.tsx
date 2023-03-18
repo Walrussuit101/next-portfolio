@@ -63,7 +63,7 @@ const Home = () => {
             <Hero mainText="Tim Jefferson" loopTexts={["Web Developer.", "React Enthusiast.", "Software Engineer.", "Hobby Guitarist.", "Phish Lover.", "Dog Dad."]} />
 
             <div className="flex justify-center mt-12 mb-36">
-                <div className="stats stats-vertical bg-base-300 mx-4 w-full sm:w-[40rem] rounded-md drop-shadow">
+                <div className="stats stats-vertical bg-base-300 mx-4 w-full md:w-[50rem] rounded-md drop-shadow">
                     <div className="badge badge-lg py-4 w-full justify-start md:w-1/2">Professional Experience / Education</div>
                     {
                         ExpEdu.map(expEdu => <CollapsableStat key={expEdu.value} statTitle={expEdu.title} statValue={expEdu.value} statDesc={expEdu.desc}>{expEdu.children}</CollapsableStat>)
