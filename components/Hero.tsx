@@ -7,7 +7,7 @@ interface HeroProps {
     children?: ReactNode
 }
 const Hero = ({ mainText, loopTexts, children }: HeroProps) => {
-    const text = useTypewriter(loopTexts);
+    const text = loopTexts.length > 0 ? useTypewriter(loopTexts) : '';
 
     return (
         <>
