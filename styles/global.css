@@ -15,12 +15,20 @@ body {
     min-height: calc(100vh - 240px);
 }
 
-.triangle {
+.triangle-down {
     width: 0; 
     height: 0; 
     border-left: calc(100vw / 2) solid transparent;
     border-right: calc(100vw / 2 - 15px) solid transparent; 
     border-top-width: 6vw;   
+} 
+
+.triangle-up {
+    width: 0; 
+    height: 0; 
+    border-left: calc(100vw / 2) solid transparent;
+    border-right: calc(100vw / 2 - 15px) solid transparent; 
+    border-bottom-width: 3vw;   
 } 
 
 /* work around for the side drawer mobile scrolling issue */

@@ -20,7 +20,7 @@ const Hero = ({ mainText, loopTexts, children }: HeroProps) => {
                     </div>
                 </div>
             </div>
-            <div className="triangle border-t-base-300" />
+            <div className="triangle-down border-t-base-300" />
         </>
     )
 }
