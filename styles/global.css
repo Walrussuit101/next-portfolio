@@ -45,11 +45,12 @@ body {
     @apply outline-none
 }
 
-.markdown-content  *:not(.link):not(.remark-highlight *) {
+.markdown-content  *:not(.link):not(.remark-highlight):not(.remark-highlight *) {
     all: revert;
     white-space: normal;
 }
 
-.remark-highlight code {
-    white-space: pre-wrap !important;
+.remark-highlight > pre > code {
+    white-space: break-spaces !important;
+    word-break: break-all !important;
 }

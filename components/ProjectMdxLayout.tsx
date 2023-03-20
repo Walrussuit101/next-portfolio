@@ -14,9 +14,6 @@ interface props {
 const ProjectMdxLayout = ({ children, meta }: props) => {
     return (
         <NavDrawer>
-            <Head>
-                <link rel="stylesheet" href="https://unpkg.com/dracula-prism/dist/css/dracula-prism.css" />
-            </Head>
             <PageTitle title={meta.title} />
             <NavBar />
             <Hero loopTexts={[]} mainText={meta.title}>
