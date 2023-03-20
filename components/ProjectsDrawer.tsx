@@ -27,9 +27,9 @@ const ProjectsDrawer = ({ children }: props) => {
                 <ul className="menu p-4 w-80 bg-base-200 text-base-content text-white">
                     {/* side bar content here */}
                     { 
-                        projects.map(project => {
+                        projects.map((project, i) => {
                             return (
-                                <li>
+                                <li key={`project-page-${i}`}>
                                     <Link href={ project.link } className={`uppercase ${currentRoute === project.link && 'underline'}`}>{ project.title }</Link>
                                 </li>
                             )
