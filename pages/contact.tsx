@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import NavBar from "../components/NavBar";
@@ -6,9 +5,6 @@ import NavDrawer from "../components/NavDrawer";
 import PageTitle from "../components/PageTitle";
 
 const Contact = () => {
-    const [email, setEmail] = useState('');
-    const [message, setMessage] = useState('');
-
     return (
         <NavDrawer>
             <PageTitle title="Contact" />
