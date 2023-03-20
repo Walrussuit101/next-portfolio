@@ -1,0 +1,197 @@
+import ProjectMdxLayout from '../../components/ProjectMdxLayout';
+
+export const meta = {
+    title: 'NHL API Wrapper',
+    links: [
+        {
+            link: 'https://github.com/Walrussuit101/nhl-api-wrapper',
+            title: 'Repository'
+        },
+        {
+            link: 'https://www.npmjs.com/package/nhl-api-wrapper',
+            title: 'NPM'
+        }
+    ]
+}
+
+# Purpose
+Publish an NPM package that provides an ORM (<a className="link" href="https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping" target="_blank">object-relational mapper</a>)
+for users to obtain data from the public NHL API and provides types for said data / validates the returned data's shape to match said types.
+
+# Inspiration
+
+At the time I was using the <a className="link" href="https://www.prisma.io" target="_blank">Prisma ORM</a> quite a lot in side projects
+and wanted to try to make my own ORM for the public NHL API. This also gave me the chance to use <a className="link" href="https://zod.dev/" target="_blank">Zod</a>
+for the first time to validate the data returned from the API. A lot of the actions the API does are the same, which leant to lots of generics usage.
+
+# Credit
+
+The documentation I used detailing the API and its endpoints was done by <a className="link" href="https://gitlab.com/dword4" target="_blank">Drew Hynes</a> and was posted 
+<a className="link" href="https://gitlab.com/dword4/nhlapi/-/blob/master/stats-api.md" target="_blank">here</a>.
+
+# Highlights
+
+The bulk of the code runs through the function below. Essentially, this returns an async function for any type T that will send a request to the API, validate the response
+using the given Zod validator, and do any filtering based on the fields of type T.
+
+```typescript
+const buildGetEntityFunction = <T> (validator: ZodType, urlEntityName: string, resultName: string, expandParam?: string) => {
+    return async <K extends T> (queryParams?: QueryParams<K>): Promise<T[]> => {
+        const url = (expandParam) ? ApiBaseUrl+urlEntityName+expandParam : ApiBaseUrl+urlEntityName;
+
+        const res = await axios.get(url);
+        const entities: K[] = res.data[resultName].map((entity: any) => {
+            return validator.parse(entity);
+        });
+
+        if (queryParams && entities.length > 0) {
+            return doQuery<K>(queryParams, entities);
+        }
+
+        return entities;
+    }
+}
+```
+
+So, to get the function for retrieving divisions you would use the following:
+```typescript
+const divisionFunction = buildGetEntityFunction<Division>(DivisionShape, 'divisions', 'divisions');
+```
+
+You can see the full usage of this function in the main package file <a className="link" href="https://github.com/Walrussuit101/nhl-api-wrapper/blob/master/src/NhlApiWrapper.ts" target="_blank">here</a>.
+
+<br/><br/>
+
+An example of basic usage (barring top level async/await issues):
+```typescript
+import NhlApiWrapper from 'nhl-api-wrapper';
+
+const divisions = await NhlApiWrapper.division();
+console.log(divisions);
+```
+
+Results in:
+
+```typescript
+[
+  {
+    id: 17,
+    name: 'Atlantic',
+    link: '/api/v1/divisions/17',
+    abbreviation: 'A',
+    conference: { id: 6, name: 'Eastern', link: '/api/v1/conferences/6' },
+    active: true
+  },
+  {
+    id: 16,
+    name: 'Central',
+    link: '/api/v1/divisions/16',
+    abbreviation: 'C',
+    conference: { id: 5, name: 'Western', link: '/api/v1/conferences/5' },
+    active: true
+  },
+  {
+    id: 18,
+    name: 'Metropolitan',
+    link: '/api/v1/divisions/18',
+    abbreviation: 'M',
+    conference: { id: 6, name: 'Eastern', link: '/api/v1/conferences/6' },
+    active: true
+  },
+  {
+    id: 15,
+    name: 'Pacific',
+    link: '/api/v1/divisions/15',
+    abbreviation: 'P',
+    conference: { id: 5, name: 'Western', link: '/api/v1/conferences/5' },
+    active: true
+  }
+]
+```
+<br/><br/>
+
+An example of filtering an object
+```typescript
+const metroTeams = await NhlApiWrapper.team({
+    where: {
+        division: {
+            nameShort: 'Metro'
+        }
+    }
+});
+console.log(metroTeams)
+```
+
+Results in:
+```typescript
+[
+  {
+    id: 1,
+    name: 'New Jersey Devils',
+    link: '/api/v1/teams/1',
+    venue: {
+      name: 'Prudential Center',
+      link: '/api/v1/venues/null',
+      city: 'Newark',
+      timeZone: [Object]
+    },
+    abbreviation: 'NJD',
+    teamName: 'Devils',
+    locationName: 'New Jersey',
+    firstYearOfPlay: '1982',
+    division: {
+      id: 18,
+      name: 'Metropolitan',
+      nameShort: 'Metro',
+      link: '/api/v1/divisions/18',
+      abbreviation: 'M'
+    },
+    conference: { id: 6, name: 'Eastern', link: '/api/v1/conferences/6' },
+    franchise: {
+      franchiseId: 23,
+      teamName: 'Devils',
+      link: '/api/v1/franchises/23'
+    },
+    shortName: 'New Jersey',
+    officialSiteUrl: 'http://www.newjerseydevils.com/',
+    franchiseId: 23,
+    active: true
+  },
+  {
+    id: 2,
+    name: 'New York Islanders',
+    link: '/api/v1/teams/2',
+    venue: {
+      name: 'UBS Arena',
+      link: '/api/v1/venues/null',
+      city: 'Elmont',
+      timeZone: [Object]
+    },
+    abbreviation: 'NYI',
+    teamName: 'Islanders',
+    locationName: 'New York',
+    firstYearOfPlay: '1972',
+    division: {
+      id: 18,
+      name: 'Metropolitan',
+      nameShort: 'Metro',
+      link: '/api/v1/divisions/18',
+      abbreviation: 'M'
+    },
+    conference: { id: 6, name: 'Eastern', link: '/api/v1/conferences/6' },
+    franchise: {
+      franchiseId: 22,
+      teamName: 'Islanders',
+      link: '/api/v1/franchises/22'
+    },
+    shortName: 'NY Islanders',
+    officialSiteUrl: 'http://www.newyorkislanders.com/',
+    franchiseId: 22,
+    active: true
+  }, 
+  ...
+]
+```
+
+
+export default ({ children }) => <ProjectMdxLayout meta={ meta }>{ children }</ProjectMdxLayout>

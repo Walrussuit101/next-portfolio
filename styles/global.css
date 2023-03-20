@@ -44,3 +44,12 @@ body {
 .collapse:focus {
     @apply outline-none
 }
+
+.markdown-content  *:not(.link):not(.remark-highlight *) {
+    all: revert;
+    white-space: normal;
+}
+
+.remark-highlight code {
+    white-space: pre-wrap !important;
+}
