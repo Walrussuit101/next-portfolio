@@ -4,6 +4,7 @@ import Hero from "../components/Hero";
 import NavBar from "../components/NavBar";
 import NavDrawer from "../components/NavDrawer";
 import PageTitle from "../components/PageTitle";
+import ProjectsDrawer from "../components/ProjectsDrawer";
 
 const ExpEdu = [
     {
@@ -59,21 +60,23 @@ const ExpEdu = [
 
 const Home = () => {
     return (
-        <NavDrawer>
-            <PageTitle title="Home" />
-            <NavBar />
-            <Hero mainText="Tim Jefferson" loopTexts={["Web Developer.", "React Enthusiast.", "Software Engineer.", "Hobby Guitarist.", "Phish Lover.", "Dog Dad."]} />
+        <ProjectsDrawer>
+            <NavDrawer>
+                <PageTitle title="Home" />
+                <NavBar />
+                <Hero mainText="Tim Jefferson" loopTexts={["Web Developer.", "React Enthusiast.", "Software Engineer.", "Hobby Guitarist.", "Phish Lover.", "Dog Dad."]} />
 
-            <div className="flex justify-center my-28">
-                <div className="stats stats-vertical bg-base-300 mx-4 w-full md:w-[50rem] rounded-md drop-shadow">
-                    <div className="badge badge-lg py-4 w-full justify-start md:w-1/2">Professional Experience / Education</div>
-                    {
-                        ExpEdu.map(expEdu => <CollapsableStat key={expEdu.value} statTitle={expEdu.title} statValue={expEdu.value} statDesc={expEdu.desc} initiallyOpened={expEdu.initiallyOpened}>{expEdu.children}</CollapsableStat>)
-                    }
+                <div className="flex justify-center my-28">
+                    <div className="stats stats-vertical bg-base-300 mx-4 w-full md:w-[50rem] rounded-md drop-shadow">
+                        <div className="badge badge-lg py-4 w-full justify-start md:w-1/2">Professional Experience / Education</div>
+                        {
+                            ExpEdu.map(expEdu => <CollapsableStat key={expEdu.value} statTitle={expEdu.title} statValue={expEdu.value} statDesc={expEdu.desc} initiallyOpened={expEdu.initiallyOpened}>{expEdu.children}</CollapsableStat>)
+                        }
+                    </div>
                 </div>
-            </div>
-            <Footer />
-        </NavDrawer>
+                <Footer />
+            </NavDrawer>
+        </ProjectsDrawer>
     )
 }
 
