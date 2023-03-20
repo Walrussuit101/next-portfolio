@@ -18,7 +18,7 @@ body {
 .triangle-down {
     width: 0; 
     height: 0; 
-    border-left: calc(100vw / 2) solid transparent;
+    border-left: calc(100vw / 2 - 15px) solid transparent;
     border-right: calc(100vw / 2 - 15px) solid transparent; 
     border-top-width: 6vw;   
 } 
@@ -26,7 +26,7 @@ body {
 .triangle-up {
     width: 0; 
     height: 0; 
-    border-left: calc(100vw / 2) solid transparent;
+    border-left: calc(100vw / 2 - 15px) solid transparent;
     border-right: calc(100vw / 2 - 15px) solid transparent; 
     border-bottom-width: 3vw;   
 } 
