@@ -10,6 +10,7 @@ const ExpEdu = [
         title: 'Computer Enterprises Inc.',
         value: 'Developer I',
         desc: "Sept. 22' - Current",
+        initiallyOpened: true,
         children: <ul className="list-disc">
             <li>Built a React application in TypeScript for users to review biometric data classified via an algorithm</li>
             <li>Developed an ahead of time image generator written in C# (.net 6) to serve images of biometric data to a React application via AWS S3 storage</li>
@@ -67,7 +68,7 @@ const Home = () => {
                 <div className="stats stats-vertical bg-base-300 mx-4 w-full md:w-[50rem] rounded-md drop-shadow">
                     <div className="badge badge-lg py-4 w-full justify-start md:w-1/2">Professional Experience / Education</div>
                     {
-                        ExpEdu.map(expEdu => <CollapsableStat key={expEdu.value} statTitle={expEdu.title} statValue={expEdu.value} statDesc={expEdu.desc}>{expEdu.children}</CollapsableStat>)
+                        ExpEdu.map(expEdu => <CollapsableStat key={expEdu.value} statTitle={expEdu.title} statValue={expEdu.value} statDesc={expEdu.desc} initiallyOpened={expEdu.initiallyOpened}>{expEdu.children}</CollapsableStat>)
                     }
                 </div>
             </div>
