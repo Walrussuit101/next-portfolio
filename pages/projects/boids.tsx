@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Footer from "../../components/Footer";
 import NavBar from "../../components/NavBar";
 import NavDrawer from "../../components/NavDrawer";
+import PageTitle from "../../components/PageTitle";
 import ProjectsDrawer from "../../components/ProjectsDrawer";
 import { BoidFieldBounds } from "../../types";
 import { Boid, CustomVector, drawBoids, initBoids, moveBoids } from "../../utils/boids";
@@ -61,6 +62,7 @@ const Boids = () => {
     return (
         <ProjectsDrawer>
             <NavDrawer>
+                <PageTitle title="Boids" />
                 <NavBar />
                 <div className="h-14 px-4 bg-transparent flex justify-center items-center gap-x-2">
                     <label htmlFor="boids-modal" className="btn btn-sm text-xl">?</label>
@@ -78,7 +80,7 @@ const Boids = () => {
                     <label className="modal-box relative" htmlFor="">
                         <h3 className="text-lg font-bold">What is this?</h3>
                         <p className="py-4">
-                            This is an implementation of the <a className="link" href="https://en.wikipedia.org/wiki/Boids" target="_blank">boids</a> algorithm using the pseudocode found <a className="link" href="https://vergenet.net/~conrad/boids/pseudocode.html" target="_blank">here</a>. 
+                            This is an implementation of the <a className="link" href="https://en.wikipedia.org/wiki/Boids" target="_blank">boids</a> algorithm using the pseudocode found <a className="link" href="https://vergenet.net/~conrad/boids/pseudocode.html" target="_blank">here</a>.
                         </p>
                         <p className="mb-2">The boids (NYC speak for "birds") will move based on the following three rules:</p>
                         <ul className="list-disc list-inside mb-2">
@@ -89,7 +91,7 @@ const Boids = () => {
                         <p className="mb-2">These three rules result in a simulation of flocking behavior in birds. Increase the number of boids to see bigger flocks!</p>
                         <p className="mb-6">Boids will move back into view on window / screen resize.</p>
                         <div className="divider" />
-                        <small>I originally implmented the algorithm in <a  className="link" href="https://github.com/Walrussuit101/boids" target="_blank">this repository</a>, which I ported to this page.</small>
+                        <small>I originally implmented the algorithm in <a className="link" href="https://github.com/Walrussuit101/boids" target="_blank">this repository</a>, which I ported to this page.</small>
                     </label>
                 </label>
             </NavDrawer>
