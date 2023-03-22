@@ -3,6 +3,10 @@ import { useRouter } from "next/router";
 
 const projects = [
     {
+        title: 'boids',
+        link: '/projects/boids'
+    },
+    {
         title: 'nhl api Wrapper',
         link: '/projects/nhl-api-wrapper'
     }
