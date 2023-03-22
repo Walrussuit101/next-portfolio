@@ -84,7 +84,7 @@ const Boids = () => {
                         <ul className="list-disc list-inside mb-2">
                             <li>Don't crowd nearby boids</li>
                             <li>Go in the same direction of nearby boids</li>
-                            <li>Go towards the center of mass of nerby boids</li>
+                            <li>Go towards the center of mass of nearby boids</li>
                         </ul>
                         <p className="mb-2">These three rules result in a simulation of flocking behavior in birds. Increase the number of boids to see bigger flocks!</p>
                         <p className="mb-6">Boids will move back into view on window / screen resize.</p>
