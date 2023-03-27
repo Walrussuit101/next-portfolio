@@ -9,17 +9,19 @@ import { Boid, CustomVector, drawBoids, initBoids, moveBoids } from "../../utils
 
 let boids: Boid[] = [];
 let mousePosition = new CustomVector(0, 0);
+const defaultParams = {
+    NUM_BOIDS: 50,
+    VELOCITY_LIMIT: 6,
+    VISUAL_RANGE: 75,
+    AVOID_MOUSE: false,
+    SHOW_VISUAL_RANGE: false
+}
 
 const Boids = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const fieldRef = useRef<HTMLDivElement>(null);
     const [bounds, setBounds] = useState<BoidFieldBounds | null>(null);
-    const [params, setParams] = useState({
-        NUM_BOIDS: 50,
-        VELOCITY_LIMIT: 6,
-        VISUAL_RANGE: 75,
-        AVOID_MOUSE: false
-    });
+    const [params, setParams] = useState(defaultParams);
 
     useEffect(() => {
         const updateBounds = () => {
@@ -52,7 +54,7 @@ const Boids = () => {
 
             const timer = setInterval(() => {
                 moveBoids(boids, bounds, params.VELOCITY_LIMIT, params.VISUAL_RANGE, mousePosition, params.AVOID_MOUSE);
-                drawBoids(boids, 10, canvasRef.current);
+                drawBoids(boids, 10, canvasRef.current, params.SHOW_VISUAL_RANGE, params.VISUAL_RANGE);
             }, 30);
 
             return () => clearInterval(timer);
@@ -64,12 +66,33 @@ const Boids = () => {
             <NavDrawer>
                 <PageTitle title="Boids" />
                 <NavBar />
-                <div className="h-14 px-4 bg-transparent flex justify-center items-center gap-x-2">
+                <div className="flex flex-wrap justify-center items-center gap-4 px-4 pt-2">
                     <label htmlFor="boids-modal" className="btn btn-sm text-xl">?</label>
-                    <label className="text-center">Avoid Mouse:</label>
-                    <input type="checkbox" className="toggle" checked={params.AVOID_MOUSE} onChange={() => setParams({ ...params, AVOID_MOUSE: !params.AVOID_MOUSE })} />
-                    <label className="text-center">{params.NUM_BOIDS} boids:</label>
-                    <input type="range" min="50" max="250" value={params.NUM_BOIDS} className="range w-40" step="50" onChange={e => setParams({ ...params, NUM_BOIDS: parseInt(e.target.value) })} />
+                    <button className="btn btn-sm uppercase" onClick={() => setParams(defaultParams)}>reset</button>
+                    <div className="flex flex-col justify-center gap-x-2 text-center">
+                        <label>Avoid Mouse:</label>
+                        <label>
+                            <input type="checkbox" className="toggle" checked={params.AVOID_MOUSE} onChange={() => setParams({ ...params, AVOID_MOUSE: !params.AVOID_MOUSE })} />
+                        </label>
+                    </div>
+                    <div className="flex flex-col justify-center gap-x-2 text-center">
+                        <label>Show Range:</label>
+                        <label>
+                            <input type="checkbox" className="toggle" checked={params.SHOW_VISUAL_RANGE} onChange={() => setParams({ ...params, SHOW_VISUAL_RANGE: !params.SHOW_VISUAL_RANGE })} />
+                        </label>
+                    </div>
+                    <div className="flex flex-col justify-center gap-x-2 text-center">
+                        <label># of Boids: {params.NUM_BOIDS}</label>
+                        <input type="range" min="50" max="250" value={params.NUM_BOIDS} className="range w-40" step="50" onChange={e => setParams({ ...params, NUM_BOIDS: parseInt(e.target.value) })} />
+                    </div>
+                    <div className="flex flex-col justify-center gap-x-2 text-center">
+                        <label>Range: {params.VISUAL_RANGE}</label>
+                        <input type="range" min="25" max="125" value={params.VISUAL_RANGE} className="range w-40" step="25" onChange={e => setParams({ ...params, VISUAL_RANGE: parseInt(e.target.value) })} />
+                    </div>
+                    <div className="flex flex-col justify-center gap-x-2 text-center">
+                        <label className="text-center">Speed Limit: {params.VELOCITY_LIMIT}</label>
+                        <input type="range" min="2" max="10" value={params.VELOCITY_LIMIT} className="range w-40" step="2" onChange={e => setParams({ ...params, VELOCITY_LIMIT: parseInt(e.target.value) })} />
+                    </div>
                 </div>
                 <div ref={fieldRef} className="h-full w-full">
                     <canvas ref={canvasRef} height={bounds?.y} width={bounds?.x} />
