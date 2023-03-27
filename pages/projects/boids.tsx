@@ -78,6 +78,7 @@ const Boids = () => {
                 <input type="checkbox" id="boids-modal" className="modal-toggle" />
                 <label htmlFor="boids-modal" className="modal cursor-pointer">
                     <label className="modal-box relative" htmlFor="">
+                        <label htmlFor="boids-modal" className="btn btn-sm absolute right-4 top-4 uppercase">x</label>
                         <h3 className="text-lg font-bold">What is this?</h3>
                         <p className="py-4">
                             This is an implementation of the <a className="link" href="https://en.wikipedia.org/wiki/Boids" target="_blank">boids</a> algorithm using the pseudocode found <a className="link" href="https://vergenet.net/~conrad/boids/pseudocode.html" target="_blank">here</a>.
