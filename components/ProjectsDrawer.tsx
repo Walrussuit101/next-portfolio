@@ -9,6 +9,10 @@ const projects = [
     {
         title: 'nhl api Wrapper',
         link: '/projects/nhl-api-wrapper'
+    },
+    {
+        title: 'typing test',
+        link: '/projects/typing-test'
     }
 ]
 
