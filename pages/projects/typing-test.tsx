@@ -115,7 +115,7 @@ const Typing = () => {
                 <PageTitle title="Typing Test" />
                 <NavBar />
                 <div className="flex justify-start items-center flex-col h-full w-full pt-10">
-                    <div className="flex justify-center items-center h-48 text-center w-[18rem] sm:w-[32rem]">
+                    <div className="flex justify-center items-center h-60 text-center w-[18rem] sm:w-[32rem]">
                         {
                             state === 'splash' &&
                             <div>
@@ -150,7 +150,7 @@ const Typing = () => {
                             </div>
                         }
                     </div>
-                    <input ref={inputRef} type="text" placeholder="Type here" className="input input-bordered w-[18rem] md:w-[34rem] mb-4" onChange={e => doInput(e.target.value)} />
+                    <input ref={inputRef} type="text" placeholder="Type here" className="input input-bordered w-[18rem] sm:w-[34rem] mb-4" onChange={e => doInput(e.target.value)} />
                     <Keyboard className="hidden sm:block" />
                 </div>
                 <Footer />
