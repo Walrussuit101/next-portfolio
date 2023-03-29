@@ -115,12 +115,11 @@ const Typing = () => {
                 <PageTitle title="Typing Test" />
                 <NavBar />
                 <div className="flex justify-start items-center flex-col h-full w-full pt-10">
-                    <div className="flex justify-center items-center h-60 text-center w-[18rem] sm:w-[32rem]">
+                    <div className="flex justify-center items-center h-48 text-center w-[18rem] sm:w-[32rem]">
                         {
                             state === 'splash' &&
                             <div>
-                                <p className="text-lg mb-2">After typing {MAX_COMPLETED} sentences, you'll recieve your accuracy and WPM (words per minute).</p>
-                                <p className="text-lg mb-4">Once start has been clicked you can begin typing right away.</p>
+                                <p className="text-lg mb-4">After typing {MAX_COMPLETED} sentences, you'll recieve your accuracy and WPM (words per minute).</p>
                                 <button className="btn uppercase" onClick={play}>start</button>
                             </div>
                         }
