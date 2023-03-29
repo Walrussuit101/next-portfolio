@@ -5,7 +5,7 @@ import NavBar from "../../components/NavBar";
 import NavDrawer from "../../components/NavDrawer";
 import PageTitle from "../../components/PageTitle";
 import ProjectsDrawer from "../../components/ProjectsDrawer";
-import { getNewSentence } from "../../utils/typing";
+import { getNewSentence } from "../../utils/typing-test";
 
 const MAX_COMPLETED = 6;
 let fails = 0;
