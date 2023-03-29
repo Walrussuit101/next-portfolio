@@ -77,7 +77,6 @@ const Typing = () => {
     useEffect(() => {
         if (state === 'playing') {
             const interval = setInterval(() => {
-                console.log('1 second lol');
                 time++;
             }, 1000);
 
