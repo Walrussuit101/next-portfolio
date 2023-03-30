@@ -13,7 +13,6 @@ let successes = 0;
 let completed = 0;
 let time = 0;
 let totalWords = 0;
-let WPM = 0;
 
 const Typing = () => {
     const inputRef = useRef<HTMLInputElement>(null);
@@ -61,7 +60,6 @@ const Typing = () => {
             completed = 0;
             time = 0;
             totalWords = 0;
-            WPM = 0;
             setSentence(getNewSentence());
             setState('playing');
             inputRef.current.focus();
