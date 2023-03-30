@@ -37,17 +37,11 @@ interface PageProps {
     lastUpdatedText: string
 }
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-    const now = new Date();
-
-    const month = now.getMonth() + 1;
-    const day = now.getDate();
-    const year = now.getFullYear();
-    let hours = now.getHours();
-    let minutes = now.getMinutes();
-
+    const dateTime = new Date().toLocaleString('en-US', { timeZone:'America/New_York', year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+    
     return {
         props: {
-            lastUpdatedText: `Last updated: ${month}/${day}/${year} @ ${hours < 9 ? "0" + hours : hours}:${minutes < 9 ? "0" + minutes : hours}`
+            lastUpdatedText: `Last updated: ${dateTime} EST`
         }
     }
 }
