@@ -1,3 +1,4 @@
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 import CollapsableStat from "../components/CollapsableStat";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
@@ -5,6 +6,53 @@ import NavBar from "../components/NavBar";
 import NavDrawer from "../components/NavDrawer";
 import PageTitle from "../components/PageTitle";
 import ProjectsDrawer from "../components/ProjectsDrawer";
+
+const Home = ({ lastUpdatedText }: InferGetStaticPropsType<typeof getStaticProps>) => {
+    return (
+        <ProjectsDrawer>
+            <NavDrawer>
+                <PageTitle title="Home" />
+                <NavBar />
+                <Hero
+                    mainText="Tim Jefferson"
+                    mainTextToolTip={lastUpdatedText}
+                    loopTexts={["Web Developer.", "React Enthusiast.", "Software Engineer.", "Hobby Guitarist.", "Phish Lover.", "Dog Dad."]}
+                />
+
+                <div className="flex justify-center my-28">
+                    <div className="stats stats-vertical bg-base-300 mx-4 w-full md:w-[50rem] rounded-md drop-shadow">
+                        <div className="badge badge-lg py-4 w-full justify-start md:w-1/2">Professional Experience / Education</div>
+                        {
+                            ExpEdu.map(expEdu => <CollapsableStat key={expEdu.value} statTitle={expEdu.title} statValue={expEdu.value} statDesc={expEdu.desc} initiallyOpened={expEdu.initiallyOpened}>{expEdu.children}</CollapsableStat>)
+                        }
+                    </div>
+                </div>
+                <Footer />
+            </NavDrawer>
+        </ProjectsDrawer>
+    )
+}
+
+interface PageProps {
+    lastUpdatedText: string
+}
+export const getStaticProps: GetStaticProps<PageProps> = async () => {
+    const now = new Date();
+
+    const month = now.getMonth() + 1;
+    const day = now.getDate();
+    const year = now.getFullYear();
+    let hours = now.getHours();
+    let minutes = now.getMinutes();
+
+    return {
+        props: {
+            lastUpdatedText: `Last updated: ${month}/${day}/${year} @ ${hours < 9 ? "0" + hours : hours}:${minutes < 9 ? "0" + minutes : hours}`
+        }
+    }
+}
+
+export default Home;
 
 const ExpEdu = [
     {
@@ -47,7 +95,7 @@ const ExpEdu = [
         children: <>
             <span className="text-lg block">Senior Software Project I & II</span>
             {/* parent collapse loses focus on <a> click, so preventDefautl on focus and manually open new tab*/}
-            <a onClick={e => { e.preventDefault(); window.open("https://github.com/YCP-Swarm-Robotics-Capstone-2020-2021", '_blank')}} className="link text-sm">Repositories</a>
+            <a onClick={e => { e.preventDefault(); window.open("https://github.com/YCP-Swarm-Robotics-Capstone-2020-2021", '_blank') }} className="link text-sm">Repositories</a>
             <ul className="list-disc mt-1 pl-6">
                 <li>Designed and implemented the backend and frontend for a wiki system</li>
                 <li>Built a TCP server that allows users to configure object recognition software</li>
@@ -57,27 +105,3 @@ const ExpEdu = [
         </>
     }
 ]
-
-const Home = () => {
-    return (
-        <ProjectsDrawer>
-            <NavDrawer>
-                <PageTitle title="Home" />
-                <NavBar />
-                <Hero mainText="Tim Jefferson" loopTexts={["Web Developer.", "React Enthusiast.", "Software Engineer.", "Hobby Guitarist.", "Phish Lover.", "Dog Dad."]} />
-
-                <div className="flex justify-center my-28">
-                    <div className="stats stats-vertical bg-base-300 mx-4 w-full md:w-[50rem] rounded-md drop-shadow">
-                        <div className="badge badge-lg py-4 w-full justify-start md:w-1/2">Professional Experience / Education</div>
-                        {
-                            ExpEdu.map(expEdu => <CollapsableStat key={expEdu.value} statTitle={expEdu.title} statValue={expEdu.value} statDesc={expEdu.desc} initiallyOpened={expEdu.initiallyOpened}>{expEdu.children}</CollapsableStat>)
-                        }
-                    </div>
-                </div>
-                <Footer />
-            </NavDrawer>
-        </ProjectsDrawer>
-    )
-}
-
-export default Home;
