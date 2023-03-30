@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import useEventListener from "./hooks/useEventListener";
 
 const row1 = 'qwertyuiop'.split('');
 const row2 = 'asdfghjkl'.split('');
@@ -9,17 +10,11 @@ interface props {
 }
 const Keyboard = ({ className }: props) => {
     const [pressedKey, setPressedKey] = useState('');
-
-    useEffect(() => {
-        const pressed = (e: KeyboardEvent) => {
-            setPressedKey(e.key.toLowerCase());
-            setTimeout(() => setPressedKey(''), 1);
-        }
-
-        window.addEventListener('keydown', pressed);
-
-        return () => window.removeEventListener('keydown', pressed);
-    }, []);
+    
+    useEventListener('keydown', (e) => {
+        setPressedKey(e.key.toLowerCase());
+        setTimeout(() => setPressedKey(''), 1);
+    });
 
     return (
         <div className={className}>

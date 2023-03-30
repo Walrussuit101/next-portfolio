@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Footer from "../../components/Footer";
+import useEventListener from "../../components/hooks/useEventListener";
 import NavBar from "../../components/NavBar";
 import NavDrawer from "../../components/NavDrawer";
 import PageTitle from "../../components/PageTitle";
@@ -23,30 +24,22 @@ const Boids = () => {
     const [bounds, setBounds] = useState<BoidFieldBounds | null>(null);
     const [params, setParams] = useState(defaultParams);
 
-    useEffect(() => {
-        const updateBounds = () => {
-            if (fieldRef.current) {
-                setBounds({
-                    x: fieldRef.current.offsetWidth - 10,
-                    y: fieldRef.current.offsetHeight - 10
-                });
-            }
+    const updateBounds = () => {
+        if (fieldRef.current) {
+            setBounds({
+                x: fieldRef.current.offsetWidth - 10,
+                y: fieldRef.current.offsetHeight - 10
+            });
         }
+    }
 
-        const updateMousePosition = (e: MouseEvent) => {
-            mousePosition.x = e.clientX;
-            mousePosition.y = e.clientY;
-        }
+    useEventListener('resize', (e) => updateBounds());
+    useEventListener('mousemove', (e) => {
+        mousePosition.x = e.clientX;
+        mousePosition.y = e.clientY;
+    });
 
-        updateBounds();
-        window.addEventListener('resize', updateBounds);
-        window.addEventListener('mousemove', updateMousePosition)
-
-        return () => {
-            window.removeEventListener('resize', updateBounds);
-            window.removeEventListener('mousemove', updateMousePosition);
-        }
-    }, [])
+    useEffect(() => updateBounds(), []);
 
     useEffect(() => {
         if (bounds) {

@@ -1,4 +1,5 @@
-import { ReactNode, useEffect, useState } from "react"
+import { ReactNode, useState } from "react"
+import useEventListener from "./hooks/useEventListener"
 
 interface props {
     statTitle: string
@@ -10,12 +11,11 @@ interface props {
 const CollapsableStat = ({ statTitle, statValue, statDesc, initiallyOpened, children }: props) => {
     const [forceOpen, setForceOpen] = useState(initiallyOpened ? 'collapse-open' : '');
 
-    useEffect(() => {
+    useEventListener('focusin', (e) => {
         if (initiallyOpened) {
-            window.addEventListener('focusin', () => setForceOpen(''));
-            return () => window.removeEventListener('focusin', () => setForceOpen(''));
+            setForceOpen('');
         }
-    }, []);
+    });
 
     return (
         <div className="stat">
