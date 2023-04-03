@@ -4,7 +4,7 @@ const useEventListener = <T extends keyof WindowEventMap> (event: T, action: (e:
     useEffect(() => {
         window.addEventListener(event, action);
         return () => window.removeEventListener(event, action);
-    }, []);
+    }, [action]);
 }
 
 export default useEventListener;
