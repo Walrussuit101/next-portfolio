@@ -7,6 +7,10 @@ const projects = [
         link: '/projects/boids'
     },
     {
+        title: 'pokedex',
+        link: '/projects/pokedex'
+    },
+    {
         title: 'nhl api Wrapper',
         link: '/projects/nhl-api-wrapper'
     },

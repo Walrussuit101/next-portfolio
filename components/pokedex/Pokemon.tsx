@@ -1,6 +1,6 @@
 import { useAtomValue } from "jotai";
 import { useEffect, useState } from "react";
-import { currentPokemonAtom } from "../../pages/pokedex";
+import { currentPokemonAtom } from "../../pages/projects/pokedex";
 import Pokedex, { Pokemon } from 'pokedex-promise-v2';
 import { splitDashResourceName, getTypeColor } from "../../utils/pokedex";
 
@@ -49,7 +49,7 @@ const Pokemon = () => {
                         {
                             data.stats.map(stat => {
                                 return (
-                                    <div className="w-full xl:w-2/3">
+                                    <div className="w-full xl:w-2/3" key={stat.stat.url}>
                                         <label className="block capitalize">{splitDashResourceName(stat.stat.name)}</label>
                                         <div className="w-full tooltip tooltip-left" data-tip={stat.base_stat}>
                                             <div className="w-full tooltip tooltip-right" data-tip={255}>

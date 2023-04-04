@@ -1,6 +1,6 @@
 import { useAtomValue, useSetAtom } from "jotai";
 import { useEffect, useRef, useState } from "react";
-import { currentPokemonAtom, pokemonAtom } from "../../pages/pokedex";
+import { currentPokemonAtom, pokemonAtom } from "../../pages/projects/pokedex";
 import { splitDashResourceName } from "../../utils/pokedex";
 
 const PokemonSearch = () => {
@@ -57,12 +57,12 @@ const PokemonSearch = () => {
                     {
                         results.map((pokemon, i) => {
                             return (
-                                <>
-                                    <li key={`search-${pokemon.url}` } className="hover:underline" onClick={() => selectPokemon(pokemon.name)}>
+                                <div key={`search-${pokemon.url}` }>
+                                    <li className="hover:underline" onClick={() => selectPokemon(pokemon.name)}>
                                         <span className="capitalize">{ splitDashResourceName(pokemon.name) }</span>
                                     </li>
                                     { i + 1 < results.length && <div className="divider"></div> }
-                                </>
+                                </div>
                             )
                         })
                     }
