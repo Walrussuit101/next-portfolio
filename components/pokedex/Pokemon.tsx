@@ -29,7 +29,7 @@ const Pokemon = () => {
             {
                 data &&
                 <>
-                    <div className="flex rounded justify-center items-center h-10 bg-base-300 text-white text-xl">
+                    <div className={`flex rounded justify-center items-center h-10 bg-base-300 text-white text-xl ${loading && 'animate-pulse'}`}>
                         <span className="inline-block capitalize font-mono">
                             {loading && 'loading ' + splitDashResourceName(currentPokemon) + '...'}
                             {!loading && splitDashResourceName(data?.name)}
