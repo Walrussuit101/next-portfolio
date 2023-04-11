@@ -25,7 +25,7 @@ const Pokemon = () => {
     }, [currentPokemon]);
 
     return (
-        <div className="flex flex-col bg-transparent w-full md:w-1/2 h-full">
+        <div className="flex flex-col bg-transparent w-full md:w-1/2 h-full overflow-y-auto overflow-x-hidden">
             {
                 data &&
                 <>
@@ -41,8 +41,8 @@ const Pokemon = () => {
                             <img 
                                 src={data?.sprites.front_default || ''} 
                                 alt={data?.name + ' sprite'} 
-                                height={200} 
-                                width={200} 
+                                height={150} 
+                                width={150} 
                                 className="m-4" 
                                 style={{fontSize: loading ? '0' : 'inherit'}} // hide alt text when trying to load
                                 onLoad={() => setLoading(false)} // say we're done trying to load when loaded/error
