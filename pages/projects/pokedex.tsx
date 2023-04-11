@@ -25,7 +25,7 @@ const PokeDex = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
             <NavDrawer>
                 <PageTitle title="Pokedex" />
                 <NavBar />
-                <div className="flex flex-col md:flex-row justify-start md:justify-center items-start md:h-full w-full gap-x-2 gap-y-4 p-4">
+                <div className="flex flex-col md:flex-row justify-start md:justify-center items-start min-h-full w-full gap-x-2 gap-y-4 p-4">
                     <Pokemon />
                     <PokemonList />
                 </div>
