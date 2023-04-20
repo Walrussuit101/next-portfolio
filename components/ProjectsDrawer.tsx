@@ -7,6 +7,10 @@ const projects = [
         link: '/projects/boids'
     },
     {
+        title: 'progresa',
+        link: 'https://progresa.app'
+    },
+    {
         title: 'pokedex',
         link: '/projects/pokedex'
     },
@@ -46,7 +50,7 @@ const ProjectsDrawer = ({ children }: props) => {
                         projects.map((project, i) => {
                             return (
                                 <li key={`project-page-${i}`}>
-                                    <Link href={ project.link } target={project.link[0] !== '/' ? '_blank' : ''} className={`uppercase ${currentRoute === project.link && 'underline'}`}>{ project.title }</Link>
+                                    <Link href={ project.link } rel="noreferrer" target={project.link[0] !== '/' ? '_blank' : ''} className={`uppercase ${currentRoute === project.link && 'underline'}`}>{ project.title }</Link>
                                 </li>
                             )
                         }) 
