@@ -16,6 +16,9 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: { children: ReactNode }) => {
     return (
         <html>
+            <head>
+                <link rel="stylesheet" href="https://unpkg.com/dracula-prism/dist/css/dracula-prism.css" />
+            </head>
             <body>
                 <ProjectsDrawer>
                     <NavDrawer>
