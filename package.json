@@ -13,8 +13,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@mdx-js/loader": "^2.3.0",
-    "@mdx-js/react": "^2.3.0",
     "@next/mdx": "^13.4.1",
     "daisyui": "^2.51.6",
     "jotai": "^2.1.0",
