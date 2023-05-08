@@ -1,49 +1,33 @@
-import { GetStaticProps, InferGetStaticPropsType } from "next";
-import CollapsableStat from "../components/CollapsableStat";
-import Footer from "../components/Footer";
+import { Metadata } from "next";
 import Hero from "../components/Hero";
-import NavBar from "../components/NavBar";
-import NavDrawer from "../components/NavDrawer";
-import PageTitle from "../components/PageTitle";
-import ProjectsDrawer from "../components/ProjectsDrawer";
+import CollapsableStat from "../components/CollapsableStat";
+import Link from "next/link";
 
-const Home = ({ lastUpdatedText }: InferGetStaticPropsType<typeof getStaticProps>) => {
+export const metadata: Metadata = {
+    title: 'Tim Jefferson | Home'
+};
+
+const Home = () => {
+    const dateTime = new Date().toLocaleString('en-US', { timeZone: 'America/New_York', year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+    const lastUpdatedText = `Last updated: ${dateTime} EST`;
+
     return (
-        <ProjectsDrawer>
-            <NavDrawer>
-                <PageTitle title="Home" />
-                <NavBar />
-                <Hero
-                    mainText="Tim Jefferson"
-                    mainTextToolTip={lastUpdatedText}
-                    loopTexts={["Web Developer.", "React Enthusiast.", "Software Engineer.", "Hobby Guitarist.", "Phish Lover.", "Dog Dad."]}
-                />
-
-                <div className="flex justify-center my-28">
-                    <div className="stats stats-vertical bg-base-300 mx-4 w-full md:w-[50rem] rounded-md drop-shadow">
-                        <div className="badge badge-lg py-4 w-full justify-start md:w-1/2">Professional Experience / Education</div>
-                        {
-                            ExpEdu.map(expEdu => <CollapsableStat key={expEdu.value} statTitle={expEdu.title} statValue={expEdu.value} statDesc={expEdu.desc} initiallyOpened={expEdu.initiallyOpened}>{expEdu.children}</CollapsableStat>)
-                        }
-                    </div>
+        <>
+            <Hero
+                mainText="Tim Jefferson"
+                mainTextToolTip={lastUpdatedText}
+                loopTexts={["Web Developer.", "React Enthusiast.", "Software Engineer.", "Hobby Guitarist.", "Phish Lover.", "Dog Dad."]}
+            />
+            <div className="flex justify-center my-28">
+                <div className="stats stats-vertical bg-base-300 mx-4 w-full md:w-[50rem] rounded-md drop-shadow">
+                    <div className="badge badge-lg py-4 w-full justify-start md:w-1/2">Professional Experience / Education</div>
+                    {
+                        ExpEdu.map(expEdu => <CollapsableStat key={expEdu.value} statTitle={expEdu.title} statValue={expEdu.value} statDesc={expEdu.desc} initiallyOpened={expEdu.initiallyOpened}>{expEdu.children}</CollapsableStat>)
+                    }
                 </div>
-                <Footer />
-            </NavDrawer>
-        </ProjectsDrawer>
+            </div>
+        </>
     )
-}
-
-interface PageProps {
-    lastUpdatedText: string
-}
-export const getStaticProps: GetStaticProps<PageProps> = async () => {
-    const dateTime = new Date().toLocaleString('en-US', { timeZone:'America/New_York', year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' });
-    
-    return {
-        props: {
-            lastUpdatedText: `Last updated: ${dateTime} EST`
-        }
-    }
 }
 
 export default Home;
@@ -89,7 +73,7 @@ const ExpEdu = [
         children: <>
             <span className="text-lg block">Senior Software Project I & II</span>
             {/* parent collapse loses focus on <a> click, so preventDefautl on focus and manually open new tab*/}
-            <a onClick={e => { e.preventDefault(); window.open("https://github.com/YCP-Swarm-Robotics-Capstone-2020-2021", '_blank') }} className="link text-sm">Repositories</a>
+            <Link href="https://github.com/YCP-Swarm-Robotics-Capstone-2020-2021" target="_blank" className="link text-sm">Repositories</Link>
             <ul className="list-disc mt-1 pl-6">
                 <li>Designed and implemented the backend and frontend for a wiki system</li>
                 <li>Built a TCP server that allows users to configure object recognition software</li>
@@ -98,4 +82,4 @@ const ExpEdu = [
             </ul>
         </>
     }
-]
+];

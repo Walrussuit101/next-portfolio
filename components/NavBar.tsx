@@ -1,11 +1,9 @@
 import Image from "next/image";
-import useNavLinks from "./hooks/useNavLink";
 import headshot from '../public/headshot.jpg';
 import link from '../public/link.svg';
+import NavLink from "./NavLink";
 
 const NavBar = () => {
-    const navLinks = useNavLinks();
-
     return (
         <div className="navbar bg-base-300 text-white pt-3 px-3 lg:px-40 xl:px-64 2xl:px-96">
             <div className="navbar-start">
@@ -13,14 +11,14 @@ const NavBar = () => {
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 20 20" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                 </label>
                 <ul className="menu menu-horizontal px-1 hidden lg:flex text-[14px]">
-                    {navLinks.map((navLink, i) => <li key={`nav-link-${i}`}>{navLink}</li>)}
+                    {routes.map((route, i) => <li key={`nav-link-${i}`}><NavLink path={route.path} text={route.text} htmlFor={route.htmlFor}/></li>)}
                 </ul>
             </div>
             <div className="navbar-end">
                 <div className="dropdown dropdown-end">
                     <label tabIndex={0} className="avatar btn btn-circle w-14 h-14">
                         <div className="w-12 h-12 rounded-full">
-                            <Image src={headshot} alt="Tim Jefferson Headshot"/>
+                            <Image src={headshot} alt="Tim Jefferson Headshot" />
                         </div>
                     </label>
                     <ul tabIndex={0} className="menu dropdown-content bg-base-200 rounded-md mt-1 w-44">
@@ -42,5 +40,11 @@ const NavBar = () => {
         </div>
     )
 }
+
+const routes = [
+    { text: 'home', path: '/' },
+    { text: 'projects', path: '/projects', htmlFor: 'projects-side-drawer' },
+    { text: 'contact', path: '/contact' }
+]
 
 export default NavBar;
