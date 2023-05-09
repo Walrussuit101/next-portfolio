@@ -3,7 +3,7 @@ import { useAtomValue } from "jotai";
 import { useEffect, useState } from "react";
 import { currentPokemonAtom } from "./PokedexWrapper";
 import Pokedex, { Pokemon } from 'pokedex-promise-v2';
-import { splitDashResourceName, getTypeColor } from "../../utils/pokedex";
+import { splitDashResourceName, getTypeColor } from "../../../utils/pokedex";
 
 const p = new Pokedex();
 

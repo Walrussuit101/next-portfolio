@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Pokedex from 'pokedex-promise-v2';
-import PokedexWrapper from '../../../components/pokedex/PokedexWrapper';
+import PokedexWrapper from './PokedexWrapper';
 
 export const metadata: Metadata = {
     title: 'Tim Jefferson | Pokedex'
