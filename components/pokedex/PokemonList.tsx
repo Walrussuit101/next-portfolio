@@ -1,5 +1,6 @@
+'use client';
 import { useAtom, useAtomValue } from "jotai";
-import { currentPokemonAtom, pokemonAtom } from "../../pages/projects/pokedex";
+import { currentPokemonAtom, pokemonAtom } from "./PokedexWrapper";
 import { getPokemonIdFromURL, splitDashResourceName } from "../../utils/pokedex";
 import PokemonSearch from "./PokemonSearch";
 

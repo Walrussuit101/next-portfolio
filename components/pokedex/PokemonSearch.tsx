@@ -1,6 +1,6 @@
 import { useAtomValue, useSetAtom } from "jotai";
 import { useEffect, useRef, useState } from "react";
-import { currentPokemonAtom, pokemonAtom } from "../../pages/projects/pokedex";
+import { currentPokemonAtom, pokemonAtom } from "./PokedexWrapper";
 import { splitDashResourceName } from "../../utils/pokedex";
 
 const PokemonSearch = () => {
