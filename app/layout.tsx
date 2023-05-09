@@ -1,10 +1,10 @@
 import "../styles/global.css";
 import { Metadata } from "next";
 import { ReactNode } from "react";
-import NavBar from "../components/NavBar";
-import ProjectsDrawer from "../components/ProjectsDrawer";
-import NavDrawer from "../components/NavDrawer";
-import Footer from "../components/Footer";
+import NavBar from "../components/server/NavBar";
+import ProjectsDrawer from "../components/server/ProjectsDrawer";
+import NavDrawer from "../components/server/NavDrawer";
+import Footer from "../components/server/Footer";
 
 export const metadata: Metadata = {
     description: 'Tim Jefferson | Web Developer, React Enthusiast, Phish Lover.',

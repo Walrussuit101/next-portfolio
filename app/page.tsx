@@ -1,6 +1,6 @@
 import { Metadata } from "next";
-import Hero from "../components/Hero";
-import CollapsableStat from "../components/CollapsableStat";
+import Hero from "../components/client/Hero";
+import CollapsableStat from "../components/server/CollapsableStat";
 import Link from "next/link";
 
 export const metadata: Metadata = {

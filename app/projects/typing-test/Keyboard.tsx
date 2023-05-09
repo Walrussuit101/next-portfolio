@@ -1,5 +1,6 @@
+'use client';
 import { useEffect, useState } from "react";
-import useEventListener from "./hooks/useEventListener";
+import useEventListener from "../../../components/hooks/useEventListener";
 
 const row1 = 'qwertyuiop'.split('');
 const row2 = 'asdfghjkl'.split('');

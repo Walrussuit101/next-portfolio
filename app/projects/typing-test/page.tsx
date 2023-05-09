@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from "react";
-import Keyboard from "../../../components/Keyboard";
+import Keyboard from "./Keyboard";
 import { getNewSentence } from "../../../utils/typing-test";
 
 const MAX_COMPLETED = 6;

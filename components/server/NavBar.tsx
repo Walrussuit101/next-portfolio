@@ -1,7 +1,7 @@
 import Image from "next/image";
-import headshot from '../public/headshot.jpg';
-import link from '../public/link.svg';
-import NavLink from "./NavLink";
+import headshot from '../../public/headshot.jpg';
+import link from '../../public/link.svg';
+import NavLink from "../client/NavLink";
 
 const NavBar = () => {
     return (

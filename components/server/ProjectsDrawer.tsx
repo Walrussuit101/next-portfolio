@@ -1,4 +1,4 @@
-import ProjectLink from "./ProjectLink";
+import ProjectLink from "../client/ProjectLink";
 
 interface props {
     children: React.ReactNode
