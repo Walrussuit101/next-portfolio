@@ -1,11 +1,17 @@
 import ProjectLink from "../client/ProjectLink";
 
+/*
+    Drawer will be on the right when mobile (< lg screens),
+    will be left when on desktop (>=lg screens),
+    this lines up with the navbar hamburger breakpoints
+*/
+
 interface props {
     children: React.ReactNode
 }
 const ProjectsDrawer = ({ children }: props) => {
     return (
-        <div className="drawer drawer-end">
+        <div className="drawer max-lg:drawer-end">
             <input id="projects-side-drawer" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content">
                 {/* Page content here, nav, content, footer, etc. */}
