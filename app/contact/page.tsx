@@ -9,7 +9,7 @@ const Contact = () => {
     return (
         <>
             <Hero mainText="Reach Out" loopTexts={['Have a Question?', "Say Hello!", "See What's New."]} />
-            <div className="flex justify-center w-full my-24">
+            <div className="flex justify-center w-full mt-24 mb-28">
                 <form
                     action="https://formspree.io/f/mbjeknqj"
                     method="POST"
