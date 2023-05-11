@@ -6,6 +6,7 @@ import Pokedex, { Pokemon } from 'pokedex-promise-v2';
 import { splitDashResourceName, getTypeColor } from "../../../utils/pokedex";
 
 const p = new Pokedex();
+const blackTextBadgeTypes = ['normal', 'electric']
 
 const Pokemon = () => {
     const currentPokemon = useAtomValue(currentPokemonAtom);
@@ -59,7 +60,7 @@ const Pokemon = () => {
                     </div>
                     <div className="flex justify-center items-center gap-1">
                         {
-                            data.types.map(type => <div key={type.type.url} className={`badge badge-lg font-bold capitalize ${loading && 'animate-pulse'} ${type.type.name === 'normal' ? 'text-base-300' : 'text-white'}`} style={{ backgroundColor: getTypeColor(type.type.name) }}>{type.type.name}</div>)
+                            data.types.map(type => <div key={type.type.url} className={`badge badge-lg font-bold capitalize ${loading && 'animate-pulse'} ${blackTextBadgeTypes.includes(type.type.name) ? 'text-base-300' : 'text-white'}`} style={{ backgroundColor: getTypeColor(type.type.name) }}>{type.type.name}</div>)
                         }
                     </div>
                     <div className="flex flex-col justify-center items-center gap-y-4 px-10 pt-4">
