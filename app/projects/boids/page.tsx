@@ -83,7 +83,7 @@ const Boids = () => {
                     <input type="range" min="2" max="10" value={params.VELOCITY_LIMIT} className="range w-40" step="2" onChange={e => setParams({ ...params, VELOCITY_LIMIT: parseInt(e.target.value) })} />
                 </div>
             </div>
-            <div ref={fieldRef} className="h-full w-full">
+            <div ref={fieldRef} className="h-screen w-full">
                 <canvas ref={canvasRef} height={bounds?.y} width={bounds?.x} />
             </div>
             <input type="checkbox" id="boids-modal" className="modal-toggle" />
