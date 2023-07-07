@@ -56,8 +56,8 @@ const Boids = () => {
     return (
         <>
             <div className="flex flex-wrap justify-center items-center gap-4 px-4 pt-2">
-                <label htmlFor="boids-modal" className="btn btn-sm text-xl">?</label>
-                <button className="btn btn-sm uppercase" onClick={() => setParams(defaultParams)}>reset</button>
+                <label htmlFor="boids-modal" className="btn btn-sm btn-neutral text-xl">?</label>
+                <button className="btn btn-sm btn-neutral uppercase" onClick={() => setParams(defaultParams)}>reset</button>
                 <div className="flex flex-col justify-center gap-x-2 text-center">
                     <label>Avoid Mouse:</label>
                     <label>
@@ -89,7 +89,7 @@ const Boids = () => {
             <input type="checkbox" id="boids-modal" className="modal-toggle" />
             <label htmlFor="boids-modal" className="modal cursor-pointer">
                 <label className="modal-box relative" htmlFor="">
-                    <label htmlFor="boids-modal" className="btn btn-sm absolute right-4 top-4 uppercase">x</label>
+                    <label htmlFor="boids-modal" className="btn btn-sm btn-netural absolute right-4 top-4 uppercase">x</label>
                     <h3 className="text-lg font-bold">What is this?</h3>
                     <p className="py-4">
                         This is an implementation of the <a className="link" href="https://en.wikipedia.org/wiki/Boids" target="_blank">boids</a> algorithm using the pseudocode found <a className="link" href="https://vergenet.net/~conrad/boids/pseudocode.html" target="_blank">here</a>.

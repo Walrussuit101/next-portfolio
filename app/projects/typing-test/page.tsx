@@ -104,13 +104,13 @@ const Typing = () => {
     }, [sentence]);
 
     return (
-        <div className="flex justify-start items-center flex-col h-full w-full pt-10">
+        <div className="flex justify-start items-center flex-col h-full min-h-screen w-full pt-10">
             <div className="flex justify-center items-center h-48 text-center w-[18rem] sm:w-[32rem]">
                 {
                     state === 'splash' &&
                     <div>
                         <p className="text-lg mb-4">After typing {MAX_COMPLETED} sentences, you'll recieve your accuracy and WPM (words per minute).</p>
-                        <button className="btn uppercase" onClick={play}>start</button>
+                        <button className="btn btn-neutral uppercase" onClick={play}>start</button>
                     </div>
                 }
                 {

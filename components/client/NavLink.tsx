@@ -5,9 +5,10 @@ import { usePathname } from "next/navigation"
 interface props {
     text: string
     path: string
+    bold?: boolean
     htmlFor?: string
 }
-const NavLink = ({ text, path, htmlFor }: props) => {
+const NavLink = ({ text, path, bold, htmlFor }: props) => {
     const currentPath = usePathname();
 
     const closeNavDrawer = () => {
@@ -21,7 +22,7 @@ const NavLink = ({ text, path, htmlFor }: props) => {
                 onClick={closeNavDrawer}
                 tabIndex={0}
                 htmlFor={htmlFor}
-                className={`font-medium uppercase ${currentPath?.includes(path) && 'underline'}`}
+                className={`uppercase ${bold && 'font-medium'} ${currentPath?.includes(path) && 'underline'}`}
             >
                 {text}
             </label>
@@ -32,7 +33,7 @@ const NavLink = ({ text, path, htmlFor }: props) => {
         <Link
             onClick={closeNavDrawer}
             href={path}
-            className={`${currentPath === path && 'underline'} font-medium uppercase`}
+            className={`${currentPath === path && 'underline'} ${bold && 'font-medium'} uppercase`}
         >
             {text}
         </Link>

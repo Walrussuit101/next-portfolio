@@ -17,7 +17,7 @@ const PokemonSearch = () => {
                 const res = pokemon.filter(pokemon => pokemon.name.startsWith(query.toLowerCase()));
                 setResults(res);
             }, 400);
-    
+
             return () => clearTimeout(timeout);
         } else {
             setResults([]);
@@ -46,27 +46,29 @@ const PokemonSearch = () => {
             <input ref={inputRef} type="checkbox" id="pokedex-search-modal" className="modal-toggle" />
             <label htmlFor="pokedex-search-modal" className="modal cursor-pointer">
                 <label className="modal-box relative h-[30rem] overflow-hidden" htmlFor="">
-                    <label htmlFor="pokedex-search-modal" className="btn btn-sm absolute right-4 top-4 uppercase">x</label>
-                    <input 
-                        type="text" 
-                        placeholder="Search Pokemon" 
-                        className="input w-full input-bordered mt-10" 
-                        value={query} 
-                        onChange={e => setQuery(e.target.value)}
-                    />
+                    <div className="flex justify-center items-center gap-x-4">
+                        <input
+                            type="text"
+                            placeholder="Search Pokemon"
+                            className="input w-full input-bordered"
+                            value={query}
+                            onChange={e => setQuery(e.target.value)}
+                        />
+                        <label htmlFor="pokedex-search-modal" className="btn btn-square uppercase">x</label>
+                    </div>
                     <ul className="menu flex-nowrap mt-4 h-[20rem] w-full rounded-b overflow-y-auto">
-                    {
-                        results.map((pokemon, i) => {
-                            return (
-                                <div key={`search-${pokemon.url}` }>
-                                    <li className="hover:underline" onClick={() => selectPokemon(pokemon.name)}>
-                                        <span className="capitalize">{ splitDashResourceName(pokemon.name) }</span>
-                                    </li>
-                                    { i + 1 < results.length && <div className="divider"></div> }
-                                </div>
-                            )
-                        })
-                    }
+                        {
+                            results.map((pokemon, i) => {
+                                return (
+                                    <div key={`search-${pokemon.url}`}>
+                                        <li className="hover:underline text-base" onClick={() => selectPokemon(pokemon.name)}>
+                                            <span className="capitalize">{splitDashResourceName(pokemon.name)}</span>
+                                        </li>
+                                        {i + 1 < results.length && <div className="divider"></div>}
+                                    </div>
+                                )
+                            })
+                        }
                     </ul>
                 </label>
             </label>

@@ -2,13 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-    height: 100vh;
+:root {
     background-color: hsl(var(--b2)); /* base-200 */
 }
 
-#__next {
+body {
     height: 100%;
+    background-color: hsl(var(--b2)); /* base-200 */
 }
 
 .min-h-hero {

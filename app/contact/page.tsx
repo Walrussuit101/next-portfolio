@@ -29,7 +29,7 @@ const Contact = () => {
                         <textarea name="message" className="textarea textarea-bordered h-60" placeholder="" required></textarea>
                     </div>
 
-                    <button className="btn w-full uppercase mt-8">submit</button>
+                    <button className="btn btn-neutral w-full uppercase mt-8">submit</button>
                 </form>
             </div>
         </>

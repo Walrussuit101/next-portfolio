@@ -20,7 +20,7 @@ const Home = () => {
             />
             <div className="flex justify-center my-28">
                 <div className="stats stats-vertical bg-base-300 mx-4 w-full md:w-[50rem] rounded-md drop-shadow">
-                    <div className="badge badge-lg py-4 w-full justify-start md:w-1/2">Professional Experience / Education</div>
+                    <div className="badge badge-neutral badge-lg py-4 w-full justify-start md:w-1/2">Professional Experience / Education</div>
                     {
                         ExpEdu.map(expEdu => <CollapsableStat key={expEdu.value} statTitle={expEdu.title} statValue={expEdu.value} statDesc={expEdu.desc} initiallyOpened={expEdu.initiallyOpened}>{expEdu.children}</CollapsableStat>)
                     }

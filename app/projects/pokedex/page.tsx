@@ -8,10 +8,11 @@ export const metadata: Metadata = {
 
 const PokeDex = async () => {
     const pokemon = await getPokemon();
+    const bulbasaur = await getBulbasaur();
 
     return (
         <div className="flex flex-col md:flex-row justify-start md:justify-center items-start md:h-full w-full gap-x-2 gap-y-4 p-4">
-            <PokedexWrapper pokemon={pokemon} />
+            <PokedexWrapper pokemon={pokemon} bulbasaur={bulbasaur} />
         </div>
     )
 }
@@ -24,4 +25,10 @@ const getPokemon = async () => {
     const res = await p.getPokemonsList(options);
 
     return res.results;
+}
+
+const getBulbasaur = async () => {
+    const p = new Pokedex();
+    const bulbasaur = await p.getPokemonByName('bulbasaur');
+    return bulbasaur;
 }

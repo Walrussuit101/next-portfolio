@@ -10,7 +10,7 @@ const PokemonList = () => {
 
     return (
         <div id="pokemon-list" className='flex flex-col rounded p-0 bg-base-300 w-full md:w-[20rem] h-[16rem] md:h-full gap-1 text-white text-xl overflow-auto'>
-            <label className='btn btn-sm mb-1 w-full uppercase sticky top-0 h-10' htmlFor="pokedex-search-modal">search</label>
+            <label className='btn btn-sm btn-neutral mb-1 w-full uppercase sticky top-0 h-10' htmlFor="pokedex-search-modal">search</label>
             {
                 pokemon.map((pokemon, i) => {
                     return (
