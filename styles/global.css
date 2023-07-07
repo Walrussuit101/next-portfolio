@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    overflow-x: hidden;
+}
+
 :root {
     background-color: hsl(var(--b2)); /* base-200 */
 }
@@ -9,6 +13,7 @@
 body {
     height: 100%;
     background-color: hsl(var(--b2)); /* base-200 */
+    overflow-x: hidden;
 }
 
 .min-h-hero {
@@ -18,16 +23,16 @@ body {
 .triangle-down {
     width: 0; 
     height: 0; 
-    border-left: calc(100vw / 2 - 15px) solid transparent;
-    border-right: calc(100vw / 2 - 15px) solid transparent; 
+    border-left: calc(100vw / 2) solid transparent;
+    border-right: calc(100vw / 2) solid transparent; 
     border-top-width: 6vw;   
 } 
 
 .triangle-up {
     width: 0; 
     height: 0; 
-    border-left: calc(100vw / 2 - 15px) solid transparent;
-    border-right: calc(100vw / 2 - 15px) solid transparent; 
+    border-left: calc(100vw / 2) solid transparent;
+    border-right: calc(100vw / 2) solid transparent; 
     border-bottom-width: 3vw;   
 } 
 
