@@ -52,12 +52,16 @@ const ProjectsDrawer = ({ children }: props) => {
 
 const projects = [
     {
-        title: 'boids',
-        link: '/projects/boids'
+        title: 'Hot Metal Gaming',
+        link: 'https://hotmetal.gg'
     },
     {
         title: 'progresa',
         link: 'https://progresa.app'
+    },
+    {
+        title: 'boids',
+        link: '/projects/boids'
     },
     {
         title: 'pokedex',
