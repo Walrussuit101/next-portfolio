@@ -21,7 +21,7 @@ const NavBar = () => {
                             <Image src={headshot} alt="Tim Jefferson Headshot" />
                         </div>
                     </label>
-                    <ul tabIndex={0} className="menu dropdown-content bg-base-200 text-base rounded-md mt-1 w-44">
+                    <ul tabIndex={0} className="menu dropdown-content bg-base-200 text-base rounded-md mt-1 w-44 z-50">
                         <li>
                             <a className="hover:underline" href="https://github.com/Walrussuit101" target="_blank" rel="noopener noreferrer">
                                 GitHub
