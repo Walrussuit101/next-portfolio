@@ -1,6 +1,4 @@
 import Image from "next/image";
-import headshot from '../../public/headshot.jpg';
-import link from '../../public/link.svg';
 import NavLink from "../client/NavLink";
 
 const NavBar = () => {
@@ -18,20 +16,20 @@ const NavBar = () => {
                 <div className="dropdown dropdown-end">
                     <label tabIndex={0} className="avatar btn btn-circle btn-neutral w-14 h-14">
                         <div className="w-12 h-12 rounded-full">
-                            <Image src={headshot} alt="Tim Jefferson Headshot" />
+                            <Image src='/headshot.jpg' height="50" width="50" alt="Tim Jefferson Headshot" />
                         </div>
                     </label>
                     <ul tabIndex={0} className="menu dropdown-content bg-base-200 text-base rounded-md mt-1 w-44 z-50">
                         <li>
                             <a className="hover:underline" href="https://github.com/Walrussuit101" target="_blank" rel="noopener noreferrer">
                                 GitHub
-                                <Image src={link} className="invert ml-14" height="20" width="20" alt={'My GitHub'} />
+                                <Image src='/link.svg' className="invert ml-14" height="20" width="20" alt={'My GitHub'} />
                             </a>
                         </li>
                         <li>
                             <a className="hover:underline" href="https://www.linkedin.com/in/timothy-jefferson-51a49b181/" target="_blank" rel="noopener noreferrer">
                                 LinkedIn
-                                <Image src={link} className="invert ml-[2.78rem]" height="20" width="20" alt={'My LinkedIn'} />
+                                <Image src='/link.svg' className="invert ml-[2.78rem]" height="20" width="20" alt={'My LinkedIn'} />
                             </a>
                         </li>
                     </ul>
