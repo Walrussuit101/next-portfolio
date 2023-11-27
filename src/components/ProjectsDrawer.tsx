@@ -1,6 +1,6 @@
 'use client';
 import { useRef } from "react";
-import ProjectLink from "../client/ProjectLink";
+import ProjectLink from "./ProjectLink";
 
 /*
     Drawer will be on the right when mobile (< lg screens),

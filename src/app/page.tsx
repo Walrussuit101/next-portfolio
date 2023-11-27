@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import Hero from "../components/client/Hero";
+import Hero from "../components/Hero";
 import Link from "next/link";
 import { ReactNode } from "react";
 

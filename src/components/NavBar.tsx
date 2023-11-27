@@ -1,5 +1,5 @@
 import Image from "next/image";
-import NavLink from "../client/NavLink";
+import NavLink from "./NavLink";
 
 const NavBar = () => {
     return (

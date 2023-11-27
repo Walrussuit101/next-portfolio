@@ -1,4 +1,4 @@
-import NavLink from "../client/NavLink";
+import NavLink from "./NavLink";
 
 interface props {
     children: React.ReactNode

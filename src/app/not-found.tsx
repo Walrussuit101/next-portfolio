@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Hero from "../components/client/Hero";
+import Hero from "../components/Hero";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

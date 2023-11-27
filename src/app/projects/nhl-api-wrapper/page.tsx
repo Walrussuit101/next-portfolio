@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Content from './content.mdx';
-import Hero from "../../../components/client/Hero";
+import Hero from "../../../components/Hero";
 
 export const metadata: Metadata = {
     title: 'Tim Jefferson | NHL API Wrapper'

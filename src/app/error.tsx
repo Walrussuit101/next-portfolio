@@ -1,6 +1,6 @@
 'use client';
 import Link from "next/link";
-import Hero from "../components/client/Hero";
+import Hero from "../components/Hero";
 
 interface ErrorProps {
     error: Error,

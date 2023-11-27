@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import Hero from "../../components/client/Hero";
+import Hero from "../../components/Hero";
 
 export const metadata: Metadata = {
     title: "Tim Jefferson | Contact"
