@@ -1,6 +1,6 @@
 'use client';
 import { ReactNode } from "react";
-import useTypewriter from "../hooks/useTypewriter";
+import useTypewriter from "../../hooks/useTypewriter";
 
 interface HeroProps {
     mainText: string

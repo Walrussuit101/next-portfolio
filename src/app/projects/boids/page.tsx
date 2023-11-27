@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from "react";
-import useEventListener from "../../../components/hooks/useEventListener";
+import useEventListener from "../../../hooks/useEventListener";
 import { BoidFieldBounds } from "../../../types";
 import { Boid, CustomVector, drawBoids, initBoids, moveBoids } from "../../../utils/boids";
 
