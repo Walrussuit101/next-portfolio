@@ -1,7 +1,7 @@
 'use client';
 import { useAtomValue } from "jotai";
 import { useEffect, useState } from "react";
-import { currentPokemonAtom } from "./PokedexWrapper";
+import { currentPokemonAtom } from "./atoms";
 import Pokedex, { Pokemon } from 'pokedex-promise-v2';
 import { splitDashResourceName, getTypeColor } from "../../../utils/pokedex";
 
