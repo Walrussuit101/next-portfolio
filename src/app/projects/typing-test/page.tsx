@@ -135,7 +135,7 @@ const Typing = () => {
                     <div>
                         <p className='text-xl mb-4'>Keystroke accuracy: {Math.round((successes / (fails + successes)) * 100)}%</p>
                         <p className='text-xl mb-4'>Time: {time} seconds, WPM: {Math.round(totalWords / (time / 60))}</p>
-                        <button className="btn uppercase" onClick={playAgain}>play again</button>
+                        <button className="btn btn-neutral uppercase" onClick={playAgain}>play again</button>
                     </div>
                 }
             </div>
