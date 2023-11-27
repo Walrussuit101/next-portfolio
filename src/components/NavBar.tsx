@@ -21,15 +21,21 @@ const NavBar = () => {
                     </label>
                     <ul tabIndex={0} className="menu dropdown-content bg-base-200 text-base rounded-md mt-1 w-44 z-50">
                         <li>
-                            <a className="hover:underline" href="https://github.com/Walrussuit101" target="_blank" rel="noopener noreferrer">
+                            <a className="hover:underline flex justify-between" href="https://github.com/Walrussuit101" target="_blank" rel="noopener noreferrer">
                                 GitHub
-                                <Image src='/link.svg' className="invert ml-14" height="20" width="20" alt={'My GitHub'} />
+                                <Image src='/link.svg' className="invert" height="20" width="20" alt={'My GitHub'} />
                             </a>
                         </li>
                         <li>
-                            <a className="hover:underline" href="https://www.linkedin.com/in/timothy-jefferson-51a49b181/" target="_blank" rel="noopener noreferrer">
+                            <a className="hover:underline flex justify-between" href="https://www.linkedin.com/in/timothy-jefferson-51a49b181/" target="_blank" rel="noopener noreferrer">
                                 LinkedIn
-                                <Image src='/link.svg' className="invert ml-[2.78rem]" height="20" width="20" alt={'My LinkedIn'} />
+                                <Image src='/link.svg' className="invert" height="20" width="20" alt={'My LinkedIn'} />
+                            </a>
+                        </li>
+                        <li>
+                            <a className="hover:underline flex justify-between" href="https://github.com/Walrussuit101/next-portfolio" target="_blank" rel="noopener noreferrer">
+                                Source
+                                <Image src='/source.svg' className="invert" height="22" width="22" alt={'My LinkedIn'} />
                             </a>
                         </li>
                     </ul>
