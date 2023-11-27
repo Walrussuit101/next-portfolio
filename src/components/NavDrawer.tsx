@@ -13,7 +13,7 @@ const NavDrawer = (props: props) => {
             </div>
             <div className="drawer-side">
                 <label htmlFor="nav-side-drawer" className="drawer-overlay"></label>
-                <ul className="menu p-4 w-80 h-full bg-base-200 text-base text-white">
+                <ul className="menu p-4 w-80 h-full bg-base-100 text-base text-white">
                     {/* side bar content here */}
                     {
                         routes.map((route, i) => <li key={`nav-link-${i}`}><NavLink path={route.path} text={route.text} htmlFor={route.htmlFor} /></li>)

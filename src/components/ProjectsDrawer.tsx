@@ -31,7 +31,7 @@ const ProjectsDrawer = ({ children }: props) => {
             </div>
             <div className="drawer-side">
                 <label htmlFor="projects-side-drawer" className="drawer-overlay"></label>
-                <ul className="menu p-4 w-80 h-full bg-base-200 text-base text-white">
+                <ul className="menu p-4 w-80 h-full bg-base-100 text-base text-white">
                     {/* side bar content here */}
                     <li className="lg:hidden w-full">
                         <a className="uppercase w-full" onClick={mobileGoBackToNavDrawer}>

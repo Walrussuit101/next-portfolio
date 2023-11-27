@@ -19,7 +19,7 @@ const NavBar = () => {
                             <Image src='/headshot.jpg' height="50" width="50" alt="Tim Jefferson Headshot" />
                         </div>
                     </label>
-                    <ul tabIndex={0} className="menu dropdown-content bg-base-200 text-base rounded-md mt-1 w-44 z-50">
+                    <ul tabIndex={0} className="menu dropdown-content bg-base-100 text-base rounded-md mt-1 w-44 z-50">
                         <li>
                             <a className="hover:underline flex justify-between" href="https://github.com/Walrussuit101" target="_blank" rel="noopener noreferrer">
                                 GitHub
