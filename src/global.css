@@ -7,12 +7,12 @@ html {
 }
 
 :root {
-    background-color: hsl(var(--b2)); /* base-200 */
+    background-color: oklch(var(--b2)); /* base-200 */
 }
 
 body {
     height: 100%;
-    background-color: hsl(var(--b2)); /* base-200 */
+    background-color: oklch(var(--b2)); /* base-200 */
     overflow-x: hidden;
 }
 
