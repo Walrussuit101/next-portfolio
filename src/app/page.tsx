@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Hero from "../components/client/Hero";
-import CollapsableStat from "../components/server/CollapsableStat";
 import Link from "next/link";
+import { ReactNode } from "react";
 
 export const metadata: Metadata = {
     title: 'Tim Jefferson | Home'
@@ -31,6 +31,31 @@ const Home = () => {
 }
 
 export default Home;
+
+interface CollapsableStatProps {
+    statTitle: string
+    statValue: string
+    statDesc: string
+    initiallyOpened?: boolean
+    children?: ReactNode
+}
+const CollapsableStat = ({ statTitle, statValue, statDesc, initiallyOpened, children }: CollapsableStatProps) => {
+    return (
+        <div className="stat">
+            <div tabIndex={0} className='collapse collapse-plus'>
+                <input type="checkbox" className="peer" defaultChecked={initiallyOpened}/>
+                <div className="collapse-title p-0 hover:cursor-pointer">
+                    <div className="stat-title whitespace-normal">{statTitle}</div>
+                    <div className="stat-value whitespace-normal">{statValue}</div>
+                    <div className="stat-desc whitespace-normal">{statDesc}</div>
+                </div>
+                <div className="collapse-content mt-4">
+                    {children}
+                </div>
+            </div>
+        </div>
+    )
+}
 
 const ExpEdu = [
     {
