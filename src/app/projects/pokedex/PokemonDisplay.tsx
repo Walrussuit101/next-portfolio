@@ -1,26 +1,47 @@
 'use client';
-import { useAtomValue } from "jotai";
+import { useAtom } from "jotai";
 import { useEffect, useState } from "react";
 import { currentPokemonAtom } from "./atoms";
-import Pokedex, { Pokemon } from 'pokedex-promise-v2';
-import { splitDashResourceName, getTypeColor } from "../../../utils/pokedex";
+import Pokedex, { Pokemon, EvolutionChain, PokemonSpecies, Chain } from 'pokedex-promise-v2';
+import { splitDashResourceName, getTypeColor, chainToDisplay } from "../../../utils/pokedex";
+import { EvoChainDisplay } from "../../../types";
 
 const p = new Pokedex();
 const blackTextBadgeTypes = ['normal', 'electric']
 
-const PokemonDisplay = ({ bulbasaur }: { bulbasaur: Pokemon }) => {
-    const currentPokemon = useAtomValue(currentPokemonAtom);
-    const [loading, setLoading] = useState(false);
+const PokemonDisplay = ({ bulbasaur, bulbasaurEvoChain }: { bulbasaur: Pokemon, bulbasaurEvoChain?: Chain }) => {
+    const [currentPokemon, setCurrentPokemon] = useAtom(currentPokemonAtom);
+    const [loadingPokemon, setLoadingPokemon] = useState(false);
+    const [loadingChain, setLoadingChain] = useState(false);
     const [data, setData] = useState<Pokemon>(bulbasaur);
+    const [evoChain, setEvoChain] = useState<EvoChainDisplay[]>(chainToDisplay(bulbasaurEvoChain));
+
+    const loading = loadingPokemon || loadingChain;
 
     useEffect(() => {
         const load = async () => {
-            setLoading(true);
+            setLoadingPokemon(true);
+            setLoadingChain(true);
+
+            // get pokemon data
             const res = await p.getPokemonByName(currentPokemon)
             setData(res);
 
+            // get evo chain
+            const species = await p.getResource(res.species.url) as PokemonSpecies;
+
+            if (!species.evolution_chain?.url) {
+                setEvoChain([]);
+            } else {
+                const evoChainRes = await p.getResource(species.evolution_chain.url) as EvolutionChain;
+                const evoChainDisplay = chainToDisplay(evoChainRes.chain);
+                setEvoChain(evoChainDisplay);
+            }
+
+            setLoadingChain(false);
+
             // if we don't have a sprite to load, say we're done loading early
-            if (!res.sprites.front_default) setLoading(false);
+            if (!res.sprites.front_default) setLoadingPokemon(false);
         }
 
         if (currentPokemon && currentPokemon !== data.name) load();
@@ -31,12 +52,12 @@ const PokemonDisplay = ({ bulbasaur }: { bulbasaur: Pokemon }) => {
             <div className={`flex rounded justify-center items-center h-10 bg-base-300 text-white text-xl ${loading && 'animate-pulse'}`}>
                 <span className="inline-block capitalize font-mono">
                     {loading && 'loading ' + splitDashResourceName(currentPokemon) + '...'}
-                    {!loading && splitDashResourceName(data?.name)}
+                    {!loading && splitDashResourceName(data.name)}
                 </span>
             </div>
             <div className="flex justify-center items-center">
                 {
-                    data?.sprites.front_default &&
+                    data.sprites.front_default &&
                     <img
                         src={data?.sprites.front_default || ''}
                         alt={data?.name + ' sprite'}
@@ -44,12 +65,12 @@ const PokemonDisplay = ({ bulbasaur }: { bulbasaur: Pokemon }) => {
                         width={150}
                         className="m-4"
                         style={{ fontSize: loading ? '0' : 'inherit' }} // hide alt text when trying to load
-                        onLoad={() => setLoading(false)} // say we're done trying to load when loaded/error
-                        onError={() => setLoading(false)}
+                        onLoad={() => setLoadingPokemon(false)} // say we're done trying to load when loaded/error
+                        onError={() => setLoadingPokemon(false)}
                     />
                 }
                 {
-                    !data?.sprites.front_default &&
+                    !data.sprites.front_default &&
                     <div className="flex justify-center items-center" style={{ height: '200px', width: '200px' }}>
                         <p className="text-lg">No sprite available</p>
                     </div>
@@ -76,6 +97,24 @@ const PokemonDisplay = ({ bulbasaur }: { bulbasaur: Pokemon }) => {
                         )
                     })
                 }
+            </div>
+            <div className={`flex flex-col my-8 gap-4 justify-center items-center ${loading && 'animate-pulse'}`}>
+                <p className="text-xl">Evolution Chain:</p>
+                <ul className="timeline timeline-vertical">
+                    {
+                        evoChain.map((chainItem, i) => {
+                            return (
+                                <li key={`evo-chain-item-${chainItem.name}`}>
+                                    <div className="timeline-middle">{chainItem.stage}</div>
+                                    <div onClick={() => setCurrentPokemon(chainItem.name)} className={`timeline-box capitalize cursor-pointer ${chainItem.stage % 2 === 0 ? 'timeline-end' : 'timeline-start'} ${data.name === chainItem.name && 'bg-white text-black'}`}>
+                                        {splitDashResourceName(chainItem.name)}
+                                    </div>
+                                    {!!evoChain[i + 1] && <hr />}
+                                </li>
+                            )
+                        })
+                    }
+                </ul>
             </div>
         </div>
     )

@@ -1,3 +1,30 @@
+import { Chain } from "pokedex-promise-v2";
+import { EvoChainDisplay } from "../../types";
+
+export const chainToDisplay = (chain?: Chain) => {
+    let flatDisplay: EvoChainDisplay[] = [];
+
+    const flattenChain = (chain: Chain, stage: number) => {
+        flatDisplay.push({ name: chain.species.name, stage: stage });
+
+        if (chain.evolves_to.length > 0) {
+            for (let i = 0; i < chain.evolves_to.length; i++) {
+                flattenChain(chain.evolves_to[i], stage + 1);
+            }                        
+        } else {
+            return;
+        }
+    }
+
+    if (!chain) {
+        return []
+    }
+
+    flattenChain(chain, 1);
+
+    return flatDisplay;
+}
+
 export const getPokemonIdFromURL = (url: string) => {
     const urlSplit = url.split('/');
 

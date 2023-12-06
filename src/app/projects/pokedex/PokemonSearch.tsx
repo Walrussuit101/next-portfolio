@@ -1,12 +1,12 @@
 'use client';
-import { useAtomValue, useSetAtom } from "jotai";
+import { useAtom, useAtomValue } from "jotai";
 import { useEffect, useRef, useState } from "react";
 import { currentPokemonAtom, pokemonAtom } from "./atoms";
 import { splitDashResourceName } from "../../../utils/pokedex";
 
 const PokemonSearch = () => {
     const pokemon = useAtomValue(pokemonAtom);
-    const setCurrentPokemon = useSetAtom(currentPokemonAtom);
+    const [currentPokemon, setCurrentPokemon] = useAtom(currentPokemonAtom);
     const inputRef = useRef<HTMLInputElement>(null);
     const [query, setQuery] = useState('');
     const [results, setResults] = useState<typeof pokemon>([]);
@@ -30,7 +30,9 @@ const PokemonSearch = () => {
         if (inputRef.current) {
             inputRef.current.checked = false;
         }
+    }
 
+    useEffect(() => {
         setTimeout(() => {
             const list = document.querySelector('#pokemon-list');
             const selected = document.querySelector('.selected-list-pokemon');
@@ -39,7 +41,7 @@ const PokemonSearch = () => {
             //@ts-ignore
             list?.scrollTo({ top: selected.offsetTop - list.offsetTop - (list.clientHeight / 4), behavior: 'smooth' });
         }, 250);
-    }
+    }, [currentPokemon]);
 
     return (
         <>
