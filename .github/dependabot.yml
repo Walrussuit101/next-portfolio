@@ -7,3 +7,6 @@ updates:
       interval: "weekly" # defaults to Monday
     reviewers:
       - "Walrussuit101"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-patch"]
