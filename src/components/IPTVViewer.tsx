@@ -27,7 +27,7 @@ const IPTVViewer = ({ medias }: IPTVViewerProps) => {
             <ReactPlayer
                 url={currentMedia.location}
                 width='75%'
-                height={500}
+                height={'75vh'}
                 controls={true}
                 onError={(e, data) => console.log(e, data)}
             />
