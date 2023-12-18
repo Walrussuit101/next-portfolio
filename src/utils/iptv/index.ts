@@ -1,7 +1,7 @@
 import { M3uParser } from "m3u-parser-generator";
 import { MediaByGroupTitle } from "../../types";
 
-export const getEnglishPlaylists = async () => {
+export const getEnglishMediaByGroupTitle = async () => {
     // fetch m3u file and parse playlist data from it
     const res = await fetch('https://iptv-org.github.io/iptv/languages/eng.m3u');
     const playListRaw = await res.text();

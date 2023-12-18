@@ -9,8 +9,10 @@ export interface EvoChainDisplay {
 }
 
 export interface MediaByGroupTitle {
-    [groupTitle: string]: {
-        name: string
-        location: string
-    }[]
+    [groupTitle: string]: Media[]
+}
+
+export interface Media {
+    name: string
+    location: string
 }

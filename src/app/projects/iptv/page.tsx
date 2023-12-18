@@ -1,9 +1,10 @@
-import { getEnglishPlaylists } from "../../../utils/iptv";
+import IPTVViewer from "../../../components/IPTVViewer";
+import { getEnglishMediaByGroupTitle } from "../../../utils/iptv";
 
 const IPTV = async () => {
-    await getEnglishPlaylists();
+    const medias = await getEnglishMediaByGroupTitle();
 
-    return <p>hi</p>;
+    return <IPTVViewer medias={medias} />;
 }
 
 export default IPTV;
