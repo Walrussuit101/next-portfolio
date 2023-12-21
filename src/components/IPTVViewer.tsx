@@ -51,20 +51,20 @@ const ChannelSelect = ({ medias, setCurrentMedia, className }: ChannelSelectProp
     return (
         <div className={`dropdown dropdown-top ${className}`}>
             <div tabIndex={0} role="button" className="btn w-72 btn-lg bg-base-300">Channel Select</div>
-            <ul tabIndex={0} className="dropdown-content z-[1] menu bg-base-300 max-h-[60vh] overflow-y-scroll flex-nowrap w-60">
+            <ul tabIndex={0} className="dropdown-content z-[1] menu bg-base-300 max-h-[60vh] overflow-y-scroll flex-nowrap w-72">
                 {
                     Object.keys(medias).map(groupTitle => {
                         return (
                             // sub menus for each grouptitle, ex: News, Religion, etc.
                             // each sub menu for each grouptitle has selectable medias
-                            <li>
+                            <li key={`sub-menu-${groupTitle}`}>
                                 <details>
                                     <summary>{groupTitle}</summary>
-                                    <ul className="w-48">
+                                    <ul className="w-60">
                                         {
                                             medias[groupTitle].map(media => {
                                                 return (
-                                                    <li onClick={() => setCurrentMedia(media)}>
+                                                    <li key={`channel-${media.name}`} onClick={() => setCurrentMedia(media)}>
                                                         <a className="whitespace-pre-wrap">
                                                             {media.name}
                                                         </a>

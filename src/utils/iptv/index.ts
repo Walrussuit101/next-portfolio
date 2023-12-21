@@ -25,6 +25,9 @@ export const getEnglishMediaByGroupTitle = async () => {
         for (let k = 0; k < groupTitles.length; k++) {
             const groupTitle = groupTitles[k];
 
+            if (groupTitle === 'Undefined') {
+                continue;
+            }
             // if we've seen the groupTitle before, push
             if (groupTitle in byGroupTitle) {
                 byGroupTitle[groupTitle].push({
@@ -41,5 +44,11 @@ export const getEnglishMediaByGroupTitle = async () => {
         }
     }
 
-    return byGroupTitle;
+    const ordered: MediaByGroupTitle = {};
+
+    Object.keys(byGroupTitle).sort().forEach(key => {
+        ordered[key] = byGroupTitle[key];
+    })
+
+    return ordered;
 }
