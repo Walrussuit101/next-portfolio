@@ -1,7 +1,9 @@
 'use client';
-import { useState } from "react";
+import { useId, useState } from "react";
 import { Media, MediaByGroupTitle } from "../types";
 import dynamic from "next/dynamic";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 // lazy load <ReactPlayer/> on client
 const ReactPlayer = dynamic(
@@ -20,7 +22,10 @@ interface IPTVViewerProps {
     medias: MediaByGroupTitle
 }
 const IPTVViewer = ({ medias }: IPTVViewerProps) => {
+    const searchParams = useSearchParams();
+
     const [currentMedia, setCurrentMedia] = useState<Media>(
+        medias[searchParams.get('g') || ''].find(media => media.name === searchParams.get('c')) ||
         medias.News.find(media => media.name.toLowerCase().includes('pittsburgh')) ||
         medias.News[0]
     );
@@ -48,6 +53,13 @@ interface ChannelSelectProps {
     className?: string
 }
 const ChannelSelect = ({ medias, setCurrentMedia, className }: ChannelSelectProps) => {
+    const router = useRouter();
+
+    const selectMedia = (media: Media, group: string) => {
+        setCurrentMedia(media);
+        router.replace(`?g=${group}&c=${media.name}`);
+    }
+
     return (
         <div className={`dropdown dropdown-top ${className}`}>
             <div tabIndex={0} role="button" className="btn w-72 btn-lg bg-base-300">Channel Select</div>
@@ -63,8 +75,9 @@ const ChannelSelect = ({ medias, setCurrentMedia, className }: ChannelSelectProp
                                     <ul className="w-60">
                                         {
                                             medias[groupTitle].map(media => {
+                                                const id = useId();
                                                 return (
-                                                    <li key={`channel-${media.name}`} onClick={() => setCurrentMedia(media)}>
+                                                    <li key={id} onClick={() => selectMedia(media, groupTitle)}>
                                                         <a className="whitespace-pre-wrap">
                                                             {media.name}
                                                         </a>
