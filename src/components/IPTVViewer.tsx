@@ -25,7 +25,7 @@ const IPTVViewer = ({ medias }: IPTVViewerProps) => {
     const searchParams = useSearchParams();
 
     const [currentMedia, setCurrentMedia] = useState<Media>(
-        medias[searchParams.get('g') || ''].find(media => media.name === searchParams.get('c')) ||
+        medias[searchParams.get('g') || '']?.find(media => media.name === searchParams.get('c')) ||
         medias.News.find(media => media.name.toLowerCase().includes('pittsburgh')) ||
         medias.News[0]
     );
