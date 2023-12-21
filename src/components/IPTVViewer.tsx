@@ -9,7 +9,7 @@ const ReactPlayer = dynamic(
     {
         ssr: false,
         loading: () => (
-            <div className="bg-base-300 w-3/4 h-[500px] rounded flex justify-center items-center">
+            <div className="bg-base-300 w-[90vw] h-[70vh] rounded flex justify-center items-center">
                 <span className="loading loading-bars loading-md"></span>
             </div>
         )
