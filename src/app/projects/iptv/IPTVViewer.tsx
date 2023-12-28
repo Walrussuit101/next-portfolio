@@ -1,9 +1,11 @@
 'use client';
 import { useId, useState } from "react";
-import { Media, MediaByGroupTitle } from "../types";
+import { Media, MediaByGroupTitle } from "../../../types";
 import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { useSetAtom } from "jotai";
+import { alertsAtom } from "./atoms";
 
 // lazy load <ReactPlayer/> on client
 const ReactPlayer = dynamic(
@@ -22,6 +24,7 @@ interface IPTVViewerProps {
     medias: MediaByGroupTitle
 }
 const IPTVViewer = ({ medias }: IPTVViewerProps) => {
+    const setAlerts = useSetAtom(alertsAtom);
     const searchParams = useSearchParams();
 
     const [currentMedia, setCurrentMedia] = useState<Media>(
@@ -30,6 +33,21 @@ const IPTVViewer = ({ medias }: IPTVViewerProps) => {
         medias.News[0]
     );
 
+    const onError = (e: any, data: any) => {
+        console.log(e);
+        console.log(data);
+
+        setAlerts(prevAlerts => {
+            return [
+                ...prevAlerts,
+                {
+                    message: `Playback failed for channel ${currentMedia.name}`,
+                    type: 'alert-error'
+                }
+            ]
+        })
+    }
+
     return (
         <div className="min-h-screen flex flex-col justify-start items-center mt-10 gap-5">
             <ReactPlayer
@@ -37,7 +55,7 @@ const IPTVViewer = ({ medias }: IPTVViewerProps) => {
                 width='90vw'
                 height={'70vh'}
                 controls={true}
-                onError={(e, data) => console.log(e, data)}
+                onError={onError}
             />
             <p>{currentMedia.name}</p>
             <ChannelSelect medias={medias} currentMedia={currentMedia} setCurrentMedia={setCurrentMedia} />
