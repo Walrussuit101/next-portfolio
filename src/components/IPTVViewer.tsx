@@ -40,7 +40,7 @@ const IPTVViewer = ({ medias }: IPTVViewerProps) => {
                 onError={(e, data) => console.log(e, data)}
             />
             <p>{currentMedia.name}</p>
-            <ChannelSelect medias={medias} setCurrentMedia={setCurrentMedia}/>
+            <ChannelSelect medias={medias} currentMedia={currentMedia} setCurrentMedia={setCurrentMedia} />
         </div>
     )
 }
@@ -49,10 +49,11 @@ export default IPTVViewer;
 
 interface ChannelSelectProps {
     medias: MediaByGroupTitle,
+    currentMedia: Media,
     setCurrentMedia: (media: Media) => void
     className?: string
 }
-const ChannelSelect = ({ medias, setCurrentMedia, className }: ChannelSelectProps) => {
+const ChannelSelect = ({ medias, currentMedia, setCurrentMedia, className }: ChannelSelectProps) => {
     const router = useRouter();
 
     const selectMedia = (media: Media, group: string) => {
@@ -71,7 +72,10 @@ const ChannelSelect = ({ medias, setCurrentMedia, className }: ChannelSelectProp
                             // each sub menu for each grouptitle has selectable medias
                             <li key={`sub-menu-${groupTitle}`}>
                                 <details>
-                                    <summary>{groupTitle}</summary>
+                                    <summary>
+                                        {groupTitle}
+                                        {medias[groupTitle].find(media => media.name === currentMedia.name) && <div className="badge badge-success badge-sm rounded-full" />}
+                                    </summary>
                                     <ul className="w-60">
                                         {
                                             medias[groupTitle].map(media => {
@@ -80,6 +84,7 @@ const ChannelSelect = ({ medias, setCurrentMedia, className }: ChannelSelectProp
                                                     <li key={id} onClick={() => selectMedia(media, groupTitle)}>
                                                         <a className="whitespace-pre-wrap">
                                                             {media.name}
+                                                            {currentMedia.name === media.name && <div className="badge badge-success badge-sm rounded-full" />}
                                                         </a>
                                                     </li>
                                                 )
