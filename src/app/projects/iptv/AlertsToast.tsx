@@ -9,7 +9,7 @@ const AlertsToast = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setAlerts(prev => prev.slice(1)); // remove oldest alert, which is at the front of array
-        }, 3000);
+        }, 5000);
 
         return () => clearTimeout(timer);
     }, [alerts]);

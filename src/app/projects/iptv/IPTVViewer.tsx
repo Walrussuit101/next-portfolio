@@ -26,6 +26,7 @@ interface IPTVViewerProps {
 const IPTVViewer = ({ medias }: IPTVViewerProps) => {
     const setAlerts = useSetAtom(alertsAtom);
     const searchParams = useSearchParams();
+    const router = useRouter();
 
     const [currentMedia, setCurrentMedia] = useState<Media>(
         medias[searchParams.get('g') || '']?.find(media => media.name === searchParams.get('m')) ||
@@ -46,6 +47,13 @@ const IPTVViewer = ({ medias }: IPTVViewerProps) => {
                 }
             ]
         })
+
+        // reset to default media options
+        setCurrentMedia(
+            medias.News.find(media => media.name.toLowerCase().includes('pittsburgh')) ||
+            medias.News[0]
+        );
+        router.replace('?');
     }
 
     return (
