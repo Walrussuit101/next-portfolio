@@ -28,7 +28,7 @@ const IPTVViewer = ({ medias }: IPTVViewerProps) => {
     const searchParams = useSearchParams();
 
     const [currentMedia, setCurrentMedia] = useState<Media>(
-        medias[searchParams.get('g') || '']?.find(media => media.name === searchParams.get('c')) ||
+        medias[searchParams.get('g') || '']?.find(media => media.name === searchParams.get('m')) ||
         medias.News.find(media => media.name.toLowerCase().includes('pittsburgh')) ||
         medias.News[0]
     );
@@ -76,7 +76,7 @@ const ChannelSelect = ({ medias, currentMedia, setCurrentMedia, className }: Cha
 
     const selectMedia = (media: Media, group: string) => {
         setCurrentMedia(media);
-        router.replace(`?g=${group}&c=${media.name}`);
+        router.replace(`?g=${group}&m=${media.name}`);
     }
 
     return (
