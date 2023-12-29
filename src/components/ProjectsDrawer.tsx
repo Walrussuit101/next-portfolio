@@ -68,6 +68,10 @@ const projects = [
         link: '/projects/pokedex'
     },
     {
+        title: 'IPTV',
+        link: '/projects/iptv'
+    },
+    {
         title: 'paytonroberts.com',
         link: 'https://paytonroberts.com'
     },
