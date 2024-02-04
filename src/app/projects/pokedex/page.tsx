@@ -12,7 +12,7 @@ const PokeDex = async () => {
     const bulbasaurEvoChain = await getBulbasaurEvoChain(bulbasaur);
 
     return (
-        <div className="flex flex-col md:flex-row justify-start md:justify-center items-start md:h-full w-full gap-x-2 gap-y-4 p-4">
+        <div className="flex flex-col md:flex-row justify-start md:justify-center items-start w-full gap-x-2 gap-y-4 p-4">
             <PokedexWrapper pokemon={pokemon} bulbasaur={bulbasaur} bulbasaurEvoChain={bulbasaurEvoChain} />
         </div>
     )
