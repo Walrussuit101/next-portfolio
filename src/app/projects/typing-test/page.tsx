@@ -104,7 +104,7 @@ const Typing = () => {
     }, [sentence]);
 
     return (
-        <div className="flex justify-start items-center flex-col h-full min-h-screen w-full pt-10">
+        <div className="flex justify-start items-center flex-col min-h-screen w-full pt-10">
             <div className="flex justify-center items-center h-48 text-center w-[18rem] sm:w-[32rem]">
                 {
                     state === 'splash' &&
