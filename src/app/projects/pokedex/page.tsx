@@ -22,7 +22,7 @@ export default PokeDex;
 
 const getPokemon = async () => {
     const p = new Pokedex();
-    const options = process.env.NODE_ENV === 'development' ? { } : {};
+    const options = process.env.NODE_ENV === 'development' ? { limit: 10 } : {};
     const res = await p.getPokemonsList(options);
 
     return res.results;
