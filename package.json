@@ -14,7 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "@mdx-js/loader": "^3.0.0",
-    "@next/mdx": "^14.1.0",
+    "@next/mdx": "^14.2.2",
     "daisyui": "^4.10.1",
     "jotai": "^2.8.0",
     "m3u-parser-generator": "^1.7.0",
