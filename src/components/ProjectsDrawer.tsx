@@ -56,6 +56,10 @@ const projects = [
         link: 'https://hotmetal.gg'
     },
     {
+        title: 'Piper',
+        link: 'https://piper.timjefferson.info'
+    },
+    {
         title: 'progresa',
         link: 'https://progresa.app'
     },
