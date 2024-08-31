@@ -60,10 +60,6 @@ const projects = [
         link: 'https://piper.timjefferson.info'
     },
     {
-        title: 'progresa',
-        link: 'https://progresa.app'
-    },
-    {
         title: 'boids',
         link: '/projects/boids'
     },
