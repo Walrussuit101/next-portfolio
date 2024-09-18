@@ -30,8 +30,8 @@ const IPTVViewer = ({ medias }: IPTVViewerProps) => {
 
     const [currentMedia, setCurrentMedia] = useState<Media>(
         medias[searchParams.get('g') || '']?.find(media => media.name === searchParams.get('m')) ||
-        medias.News.find(media => media.name.toLowerCase().includes('pittsburgh')) ||
-        medias.News[0]
+        medias.Weather.find(media => media.name.toLowerCase().includes('accuweather')) ||
+        medias.Weather[0]
     );
 
     const onError = (e: any, data: any) => {
@@ -50,7 +50,7 @@ const IPTVViewer = ({ medias }: IPTVViewerProps) => {
 
         // reset to default media options
         setCurrentMedia(
-            medias.News.find(media => media.name.toLowerCase().includes('pittsburgh')) ||
+            medias.Weather.find(media => media.name.toLowerCase().includes('accuweather')) ||
             medias.News[0]
         );
         router.replace('?');
