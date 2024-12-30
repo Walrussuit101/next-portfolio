@@ -33,6 +33,12 @@ const NavBar = () => {
                             </a>
                         </li>
                         <li>
+                            <a className="hover:underline flex justify-between" href="https://bsky.app/profile/timjefferson.info" target="_blank" rel="noopener noreferrer">
+                                Bluesky
+                                <Image src='/link.svg' className="invert" height="20" width="20" alt={'My Bluesky'} />
+                            </a>
+                        </li>
+                        <li>
                             <a className="hover:underline flex justify-between" href="https://github.com/Walrussuit101/next-portfolio" target="_blank" rel="noopener noreferrer">
                                 Source
                                 <Image src='/source.svg' className="invert" height="22" width="22" alt={'My LinkedIn'} />
