@@ -52,12 +52,16 @@ const ProjectsDrawer = ({ children }: props) => {
 
 const projects = [
     {
-        title: 'Hot Metal Gaming',
-        link: 'https://hotmetal.gg'
+        title: 'Blue Links',
+        link: 'https://bluelinks.fyi/u/timjefferson.info'
     },
     {
         title: 'Piper',
         link: 'https://piper.timjefferson.info'
+    },
+    {
+        title: 'Hot Metal Gaming',
+        link: 'https://hotmetal.gg'
     },
     {
         title: 'boids',
