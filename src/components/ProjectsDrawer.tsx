@@ -56,10 +56,6 @@ const projects = [
         link: 'https://bluelinks.fyi/u/timjefferson.info'
     },
     {
-        title: 'Piper',
-        link: 'https://piper.timjefferson.info'
-    },
-    {
         title: 'Hot Metal Gaming',
         link: 'https://hotmetal.gg'
     },
